@@ -6,7 +6,6 @@
 /storage/installed
 /vendor
 node_modules
-.env
 .env.backup
 package-lock.json
 composer.lock
