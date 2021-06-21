@@ -1,6 +1,6 @@
 {
     "name": "duxphp/ravelcms",
-    "type": "composer-plugin",
+    "type": "project",
     "description": "This CMS system based on laravel",
     "keywords": [
         "duxphp",
@@ -13,8 +13,8 @@
         "ext-fileinfo": "*",
         "ext-json": "*",
         "composer-plugin-api": "^2.0",
+        "duxphp/duxravel-app": "dev-main",
         "duxphp/duxravel-installer": "^1.0",
-        "duxphp/duxravel-test": "^0.1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "godruoyi/php-snowflake": "^1.0",
@@ -49,8 +49,7 @@
     },
     "extra": {
         "laravel": {
-        },
-        "class": "Modules\\Common\\Composer\\AppPlugin"
+        }
     },
     "autoload": {
         "psr-4": {
