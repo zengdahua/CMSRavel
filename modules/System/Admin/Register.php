@@ -4,6 +4,7 @@ namespace Modules\System\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Modules\System\Model\SystemUser;
 
 /**
  * 注册用户
@@ -30,10 +31,13 @@ class Register extends Common
             'password.confirmed' => '确认密码输入不正确',
         ])->validate();
 
-        \Modules\System\Model\SystemUser::create([
-            'username' => $request->input('username'),
-            'password' => \Hash::make($request->input('password')),
-        ])->save();
+        $user = new \Modules\System\Model\SystemUser();
+
+        $user->username = $request->input('username');
+        $user->password = $request->input('password');
+        $user->user_id = 1;
+        $user->roles()->attach(1);
+        $user->save();
 
         return app_success('创建账号成功，请进行登录', [], route('admin.login'));
     }

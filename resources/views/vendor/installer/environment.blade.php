@@ -14,10 +14,10 @@
         {!! trans('installer_messages.environment.menu.desc') !!}
     </p>
     <div class="py-6 flex justify-center gap-4">
-        <a href="{{ route('LaravelInstaller::environmentClassic') }}" class="btn">
+        <a href="{{ route('DuxravelInstaller::environmentClassic') }}" class="btn">
             {{ trans('installer_messages.environment.menu.classic-button') }}
         </a>
-        <a href="{{ route('LaravelInstaller::environmentWizard') }}" class="btn-blue">
+        <a href="{{ route('DuxravelInstaller::environmentWizard') }}" class="btn-blue">
             {{ trans('installer_messages.environment.menu.wizard-button') }}
         </a>
     </div>

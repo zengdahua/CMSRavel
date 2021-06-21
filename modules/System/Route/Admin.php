@@ -13,4 +13,4 @@ Route::get('login/logout', 'Modules\System\Admin\Login@logout')->name('admin.log
  * 用户注册
  */
 Route::get('register', 'Modules\System\Admin\Register@index')->middleware('auth.admin.register')->name('admin.register');
-//Route::post('register', ['Modules\System\Admin\Register@submit'])->name('admin.register.submit')->middleware('auth.admin.register');
+Route::post('register', 'Modules\System\Admin\Register@submit')->middleware('auth.admin.register')->name('admin.register.submit');
