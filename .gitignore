@@ -9,6 +9,7 @@ node_modules
 .env
 .env.backup
 package-lock.json
+composer.lock
 yarn.lock
 .phpunit.result.cache
 Homestead.json
