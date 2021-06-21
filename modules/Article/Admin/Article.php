@@ -2,6 +2,7 @@
 
 namespace Modules\Article\Admin;
 
+use Modules\Common\Composer\AppPlugin;
 use Modules\Common\Util\Tree;
 use Modules\Common\UI\Form;
 use Modules\Common\UI\Table;
