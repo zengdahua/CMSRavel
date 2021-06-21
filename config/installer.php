@@ -27,7 +27,6 @@ return [
             'tokenizer',
             'JSON',
             'cURL',
-            'redis',
         ],
         'apache' => [
             'mod_rewrite',
@@ -44,7 +43,6 @@ return [
     |
     */
     'permissions' => [
-        'public/upload' => '755',
         'storage/framework/' => '755',
         'storage/logs/' => '755',
         'bootstrap/cache/' => '755',
