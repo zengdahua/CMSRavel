@@ -12,7 +12,7 @@
         "ext-bcmath": "*",
         "ext-fileinfo": "*",
         "ext-json": "*",
-        "duxphp/duxravel-installer": "dev-main",
+        "duxphp/duxravel-installer": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "godruoyi/php-snowflake": "^1.0",
