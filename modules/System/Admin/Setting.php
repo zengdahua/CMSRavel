@@ -51,6 +51,14 @@ class Setting extends \Modules\System\Admin\Expend
             $form->text('系统名称', 'APP_NAME');
             $form->text('系统域名', 'APP_URL');
         });
+
+        $tabs->column('主题配置', function (Form $form) {
+            $form->text('主题标题', 'THEME_TITLE');
+            $form->text('主题关键词', 'THEME_KEYWORD');
+            $form->text('主题描述', 'THEME_DESCRIPTION');
+            $form->text('默认主题', 'THEME_DEFAULT');
+        });
+
         $tabs->column('安全配置', function (Form $form) {
             $form->radio('调试模式', 'APP_DEBUG', [
                 true => '开启',
