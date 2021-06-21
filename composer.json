@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "duxphp/ravelcms",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "This CMS system based on laravel",
     "keywords": [
         "framework",
         "laravel"
