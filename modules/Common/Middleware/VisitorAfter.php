@@ -21,6 +21,9 @@ class VisitorAfter
         if (empty($request->route())) {
             abort(404);
         }
+        if (!file_exists(storage_path('installed'))) {
+            return $response;
+        }
         //if ($request->route()->getAction('statis')) {
         $this->api($request);
         //}

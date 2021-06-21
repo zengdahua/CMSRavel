@@ -13,7 +13,7 @@
       {{ trans('installer_messages.welcome.message') }}
     </p>
     <p class="text-right py-8">
-      <a href="{{ route('LaravelInstaller::requirements') }}" class="btn-blue">
+      <a href="{{ route('DuxravelInstaller::requirements') }}" class="btn-blue">
         {{ trans('installer_messages.welcome.next') }}
           <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
       </a>

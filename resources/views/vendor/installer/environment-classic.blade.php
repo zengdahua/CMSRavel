@@ -10,7 +10,7 @@
 
 @section('container')
 
-    <form method="post" action="{{ route('LaravelInstaller::environmentSaveClassic') }}">
+    <form method="post" action="{{ route('DuxravelInstaller::environmentSaveClassic') }}">
         {!! csrf_field() !!}
         <textarea class="form-textarea bg-gray-800 text-white" rows="20" name="envConfig">{{ $envConfig }}</textarea>
         <div class="text-right py-4">
@@ -22,10 +22,10 @@
 
     @if( ! isset($environment['errors']))
         <div class="flex justify-between pb-6 pt-4">
-            <a class="btn" href="{{ route('LaravelInstaller::environmentWizard') }}">
+            <a class="btn" href="{{ route('DuxravelInstaller::environmentWizard') }}">
                 {!! trans('installer_messages.environment.classic.back') !!}
             </a>
-            <a class="btn-blue" href="{{ route('LaravelInstaller::database') }}">
+            <a class="btn-blue" href="{{ route('DuxravelInstaller::database') }}">
                 {!! trans('installer_messages.environment.classic.install') !!}
                 <i class="fa fa-angle-double-right fa-fw" aria-hidden="true"></i>
             </a>

@@ -12,6 +12,7 @@
         "ext-bcmath": "*",
         "ext-fileinfo": "*",
         "ext-json": "*",
+        "duxphp/duxravel-installer": "dev-main",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "godruoyi/php-snowflake": "^1.0",
@@ -27,10 +28,8 @@
         "nesk/puphpeteer": "^2.0",
         "orangehill/iseed": "^3.0",
         "phpoffice/phpspreadsheet": "^1.15",
-        "rachidlaasri/laravel-installer": "^4.1",
         "rtconner/laravel-tagging": "^4.1",
-        "tymon/jwt-auth": "^1.0",
-        "workerman/workerman": "^4.0"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

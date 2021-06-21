@@ -25,10 +25,10 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
+        \Modules\Common\Middleware\CheckInstall::class,
         \Modules\Common\Middleware\VisitorBefore::class,
         \Modules\Common\Middleware\VisitorAfter::class,
     ];
-
     /**
      * The application's route middleware groups.
      *

@@ -5,6 +5,10 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+if (!is_dir(__DIR__.'/../vendor')) {
+    exit('Please install compser and run the command "composer install"');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Check If Application Is Under Maintenance

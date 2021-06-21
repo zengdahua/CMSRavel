@@ -53,7 +53,7 @@
 
     @if ( ! isset($requirements['errors']) && $phpSupportInfo['supported'] )
         <div class="py-8 text-right">
-            <a class="btn-blue" href="{{ route('LaravelInstaller::permissions') }}">
+            <a class="btn-blue" href="{{ route('DuxravelInstaller::permissions') }}">
                 {{ trans('installer_messages.requirements.next') }}
                 <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
             </a>

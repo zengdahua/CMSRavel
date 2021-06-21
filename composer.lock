@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d9ab82f9d949b20763ef1a30f0ca6907",
+    "content-hash": "143cbd8877c645857d190ea028bce384",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -617,6 +617,67 @@
                 }
             ],
             "time": "2020-11-24T19:55:57+00:00"
+        },
+        {
+            "name": "duxphp/duxravel-installer",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/duxphp/DuxRavelInstaller.git",
+                "reference": "b0481b92f9d17820bd69a3c169ae7604074b8060"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/duxphp/DuxRavelInstaller/zipball/b0481b92f9d17820bd69a3c169ae7604074b8060",
+                "reference": "b0481b92f9d17820bd69a3c169ae7604074b8060",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "duxphp\\DuxravelInstaller\\Providers\\DuxravelInstallerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "duxphp\\DuxravelInstaller\\": "src/"
+                },
+                "files": [
+                    "src/Helpers/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rachid Laasri",
+                    "email": "rashidlaasri@gmail.com"
+                },
+                {
+                    "name": "Jeremy Kenedy",
+                    "email": "jeremykenedy@gmail.com"
+                }
+            ],
+            "description": "Laravel web installer",
+            "support": {
+                "issues": "https://github.com/duxphp/DuxRavelInstaller/issues",
+                "source": "https://github.com/duxphp/DuxRavelInstaller/tree/main"
+            },
+            "time": "2021-06-21T04:34:43+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -3235,7 +3296,13 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/orangehill/iseed/zipball/874f77a20d49aa4c6c5fec2daf0daa070514e013",
                 "reference": "874f77a20d49aa4c6c5fec2daf0daa070514e013",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
@@ -3941,70 +4008,6 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.10.8"
             },
             "time": "2021-04-10T16:23:39+00:00"
-        },
-        {
-            "name": "rachidlaasri/laravel-installer",
-            "version": "4.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rashidlaasri/LaravelInstaller.git",
-                "reference": "b751b4c23dba893e9a4a12f881a6fd8fa921d228"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rashidlaasri/LaravelInstaller/zipball/b751b4c23dba893e9a4a12f881a6fd8fa921d228",
-                "reference": "b751b4c23dba893e9a4a12f881a6fd8fa921d228",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "RachidLaasri\\LaravelInstaller\\": "src/"
-                },
-                "files": [
-                    "src/Helpers/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rachid Laasri",
-                    "email": "rashidlaasri@gmail.com"
-                },
-                {
-                    "name": "Jeremy Kenedy",
-                    "email": "jeremykenedy@gmail.com"
-                }
-            ],
-            "description": "Laravel web installer",
-            "support": {
-                "issues": "https://github.com/rashidlaasri/LaravelInstaller/issues",
-                "source": "https://github.com/rashidlaasri/LaravelInstaller/tree/4.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://rachidlaasri.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://twitter.com/rashidlaasri",
-                    "type": "custom"
-                }
-            ],
-            "time": "2020-05-19T13:19:45+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -7060,59 +7063,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
-        },
-        {
-            "name": "workerman/workerman",
-            "version": "v4.0.19",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/walkor/Workerman.git",
-                "reference": "af6025976fba817eeb4d5fbf8d0c1059a5819da3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/walkor/Workerman/zipball/af6025976fba817eeb4d5fbf8d0c1059a5819da3",
-                "reference": "af6025976fba817eeb4d5fbf8d0c1059a5819da3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "suggest": {
-                "ext-event": "For better performance. "
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Workerman\\": "./"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "walkor",
-                    "email": "walkor@workerman.net",
-                    "homepage": "http://www.workerman.net",
-                    "role": "Developer"
-                }
-            ],
-            "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
-            "homepage": "http://www.workerman.net",
-            "keywords": [
-                "asynchronous",
-                "event-loop"
-            ],
-            "support": {
-                "email": "walkor@workerman.net",
-                "forum": "http://wenda.workerman.net/",
-                "issues": "https://github.com/walkor/workerman/issues",
-                "source": "https://github.com/walkor/workerman",
-                "wiki": "http://doc.workerman.net/"
-            },
-            "time": "2021-03-05T06:44:28+00:00"
         }
     ],
     "packages-dev": [
@@ -9967,7 +9917,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "duxphp/duxravel-installer": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
