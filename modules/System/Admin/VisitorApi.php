@@ -71,7 +71,7 @@ class VisitorApi extends \Modules\System\Admin\Expend
                     } else {
                         $badge->color('red');
                     }
-                }) . ' ' . $item['desc'];
+                }) . ' <span class="ml-2">' . $item['desc'] . '</span>';
         })->desc('name');
         $table->column('访问量', 'pv');
         $table->column('访客', 'uv');

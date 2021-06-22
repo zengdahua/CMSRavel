@@ -41,7 +41,7 @@ trait Operate
                     } else {
                         $badge->color('red');
                     }
-                }) . ' ' . $item['desc'];
+                }) . ' <span class="ml-2">' . $item['desc'] . '</span>';
         })->desc('name');
         $table->column('客户端', 'ip')->desc('ua', function ($value, $item) {
 
@@ -81,7 +81,7 @@ trait Operate
             ->get(['method', 'name', 'route', 'desc', 'time', 'create_time']);
 
         $this->assign('apiList', $apiList);
-        return $this->dialogView();
+        return $this->dialogView('Common.Views.Manage.VisitorOperate.loadData');
     }
 
     public function info($id)
