@@ -45,9 +45,9 @@ class Kernel extends ConsoleKernel
             $file = str_replace(
                 ['/', '.php'],
                 ['\\', ''],
-                Str::after($file, base_path('modules').DIRECTORY_SEPARATOR)
-                );
-            $this->commands[] =  "\\Modules\\{$file}";
+                Str::after($file, base_path('modules'))
+            );
+            $this->commands[] =  "\\Modules{$file}";
         }
     }
 
