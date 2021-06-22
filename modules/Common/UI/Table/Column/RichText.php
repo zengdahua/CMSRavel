@@ -75,7 +75,7 @@ class RichText implements Component
                 if ($vo['callback'] instanceof \Closure) {
                     $var = call_user_func($vo['callback'], $var, $data);
                 }
-                $desc[] = $var;
+                $desc[] = is_array($var) ? implode(' ', $var) : $var;
             }
             $descHtml = implode(' ', array_map(static function ($value) {
                 if ($value === null) {

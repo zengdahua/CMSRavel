@@ -103,6 +103,7 @@ if (!function_exists("app_hook")) {
         if (empty($name)) {
             return null;
         }
+        $layer = ucfirst($layer);
         $apiPath = base_path('modules') . '/*/' . $layer . '/' . ucfirst($name) . '.php';
         $apiList = glob($apiPath);
         if (empty($apiList)) {

@@ -23,7 +23,7 @@ class Api extends \Modules\Common\Model\Base
      */
     public static function getPlatformType()
     {
-        $list = app_hook('service', 'Type', 'getDriverType');
+        $list = app_hook('Service', 'Type', 'getDriverType');
         $data = [];
         foreach ((array) $list as $value) {
             $data = array_merge_recursive((array) $data, (array) $value);

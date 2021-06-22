@@ -10,7 +10,7 @@ class Url extends Common
 
     private function getMenuUrl(): array
     {
-        $list = app_hook('service', 'type', 'getMenuUrl');
+        $list = app_hook('Service', 'type', 'getMenuUrl');
         $data = [];
         foreach ((array)$list as $value) {
             $data = array_merge_recursive((array)$data, (array)$value);

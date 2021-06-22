@@ -82,7 +82,7 @@ class View
 
     public function getMenu(string $layout = '', string $route = ''): array
     {
-        $list = app_hook('service', 'Menu', 'get' . ucfirst($layout) . 'Menu');
+        $list = app_hook('Service', 'Menu', 'get' . ucfirst($layout) . 'Menu');
 
         $data = [];
         foreach ((array)$list as $value) {

@@ -30,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
             return (new \Modules\Common\Util\Route($class, $name));
         });
 
-        app_hook('service', 'app', 'extend');
+        app_hook('Service', 'App', 'extend');
     }
 }

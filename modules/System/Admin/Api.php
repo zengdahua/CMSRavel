@@ -8,7 +8,7 @@ use Modules\Common\UI\Table;
 class Api extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Modules\Common\Model\api::class;
+    public string $model = \Modules\Common\Model\Api::class;
 
     protected function table(): Table
     {

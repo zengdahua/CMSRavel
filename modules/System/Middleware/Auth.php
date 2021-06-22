@@ -2,6 +2,8 @@
 
 namespace Modules\System\Middleware;
 
+use Modules\System\Model\SystemUser;
+
 class Auth
 {
     public function handle($request, \Closure $next)
@@ -11,7 +13,7 @@ class Auth
             if ($request->ajax() || $request->wantsJson()) {
                 app_error('登录失效', 401, route('admin.login'));
             } else {
-                $count = module('system.Model.SystemUser')->count();
+                $count = SystemUser::count();
                 if ($count) {
                     return redirect()->intended(route('admin.login'));
                 } else {
