@@ -13,7 +13,7 @@
         "ext-fileinfo": "*",
         "ext-json": "*",
         "composer-plugin-api": "^2.0",
-        "duxphp/duxravel-app": "dev-main",
+        "duxphp/duxravel-app": "^0.1",
         "duxphp/duxravel-installer": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
