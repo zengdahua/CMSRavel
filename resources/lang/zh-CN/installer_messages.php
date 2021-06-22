@@ -110,6 +110,7 @@ return [
                 'REDIS_PASSWORD_placeholder' => 'Redis 密码，可留空',
                 'REDIS_PORT_label' => 'Redis 端口',
                 'REDIS_PORT_placeholder' => 'Redis 端口',
+                'REDIS_CONNECTION_failed' => 'Redis 链接失败',
 
                 'class_mail_label' => '邮件设置',
                 'MAIL_MAILER_label' => '邮件驱动',

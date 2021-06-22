@@ -124,6 +124,7 @@ return [
                 'MAIL_PASSWORD_placeholder' => 'mail password',
                 'MAIL_ENCRYPTION_label' => 'mail encryption',
                 'MAIL_ENCRYPTION_placeholder' => 'mail encryption',
+                'REDIS_CONNECTION_failed' => 'Redis connection failed',
 
                 'buttons' => [
                     'setup_database' => 'Setup Database',
