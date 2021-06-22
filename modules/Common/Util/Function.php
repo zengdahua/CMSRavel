@@ -193,3 +193,12 @@ if (!function_exists('html_text')) {
         return $len ? Str::limit($text, $len, '') : $text;
     }
 }
+
+if (!function_exists('file_class')) {
+    function file_class($file): string
+    {
+        $path = substr($file, strlen(base_path('modules') . '/'), -4);
+        $path = str_replace('\\', '/', $path);
+        return '\\Modules\\' . str_replace('/', '\\', $path);
+    }
+}

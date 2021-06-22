@@ -3,7 +3,6 @@
 namespace Modules\Common\Service;
 
 use Illuminate\Support\Facades\Blade;
-use Modules\Common\Util\Route;
 
 /**
  * 应用扩展接口
@@ -12,12 +11,6 @@ class App
 {
     public function extend()
     {
-        /**
-         * 路由扩展
-         */
-        \Route::macro('manage', function ($class, $name = '') {
-            return (new Route($class, $name));
-        });
 
         /**
          * 模板组件

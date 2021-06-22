@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
         error_reporting(E_ALL^E_WARNING^E_NOTICE);
         Paginator::useTailwind();
 
+        \Route::macro('manage', function ($class, $name = '') {
+            return (new \Modules\Common\Util\Route($class, $name));
+        });
+
         app_hook('service', 'app', 'extend');
     }
 }

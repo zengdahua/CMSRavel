@@ -44,7 +44,7 @@ class AppAdmin extends \Modules\Common\Console\Common\Stub
             $this->error('应用不存在，请检查!');
             exit;
         }
-        $fun = lcfirst($this->getAppName('请输入文件名'));
+        $fun = lcfirst($this->getAppName('请输入类名'));
         $class = ucfirst($fun);
         $title = $this->ask('请输入功能名称');
         $modelClass = '\Modules\Common\Model\Base';
@@ -85,32 +85,7 @@ class AppAdmin extends \Modules\Common\Console\Common\Stub
                     EOL, $menuContent);
         file_put_contents($menuFile, $menuContent);
 
-        //创建模型
-        if ($table) {
-            Schema::create($table, function (Blueprint $table) use ($key) {
-                $table->increments($key);
-                $table->integer('create_time');
-                $table->integer('update_time');
-            });
-            $this->generatorFile($app."/Model/{$modelName}.php", __DIR__.'/Tpl/AppModel/Model.stub', [
-                'app' => $app,
-                'table' => $table,
-                'modelName' => $modelName,
-                'key' => $key,
-            ]);
-        }
-
         $this->info('创建模型成功');
-    }
-
-    public function getClass()
-    {
-        $model = $this->ask('请输入模型命名空间');
-        if (!class_exists($model)) {
-            $this->error('模型类不存在');
-            return $this->getClass();
-        }
-        return $model;
     }
 
 }

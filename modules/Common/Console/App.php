@@ -28,7 +28,8 @@ class App extends \Modules\Common\Console\Common\Stub
         $name = $this->argument('name');
         $appDir = ucfirst($name);
         if (is_dir(base_path('/modules/' . $appDir))) {
-            return $this->error('应用已存在，请更换应用名!');
+            $this->error('应用已存在，请更换应用名!');
+            exit;
         }
         $id = (new \Godruoyi\Snowflake\Snowflake)->id();
         // 创建应用结构
