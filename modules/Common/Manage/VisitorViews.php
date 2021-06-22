@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Common\Controller;
+namespace Modules\Common\Manage;
 
 use Illuminate\Support\Facades\DB;
+use Modules\Common\Util\View;
 
-class VisitorViews extends \App\Http\Controllers\Controller
+class VisitorViews
 {
-
     public function info()
     {
         $startTime = strtotime('-1 year');
@@ -38,9 +38,8 @@ class VisitorViews extends \App\Http\Controllers\Controller
             \Arr::set($config, 'legend.show', true);
             return $config;
         });
-        return dialog_view('', [
-            'appChart' => $appChart
-        ]);
+        $this->assign('appChart', $appChart);
+        return (new View('Common.Views.Manage.VisitorViews.info', $appChart))->render('dialog');
     }
 
 }

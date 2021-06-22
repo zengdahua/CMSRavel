@@ -1,6 +1,3 @@
-
-
-
 <table class="table-box ">
     <thead>
     <tr>

@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\System\Service;
+namespace Modules\Tools\Service;
 
-use Modules\System\Model\FormData;
+use Modules\Tools\Model\FormData;
 
 /**
  * 表单服务
@@ -13,7 +13,7 @@ class Form
     /*public function demo()
     {
         $form->card('扩展信息', function ($form) use ($id) {
-            app(\Modules\System\Service\Form::class)->getFormUI(1, $form, $id, 'article');
+            app(\Modules\Tools\Service\Form::class)->getFormUI(1, $form, $id, 'article');
         });
 
         $form->after(function ($data, $type, $model) {
@@ -21,7 +21,7 @@ class Form
             foreach ($data as $key => $vo) {
                 $tmpArr[$key] = $vo['value'];
             }
-            app(\Modules\System\Service\Form::class)->saveForm(1, $tmpArr, $model->article_id, 'article');
+            app(\Modules\Tools\Service\Form::class)->saveForm(1, $tmpArr, $model->article_id, 'article');
         });
     }*/
 
@@ -35,7 +35,7 @@ class Form
      */
     public static function getFormUI($formId, $form, $id = 0, $hasType = '')
     {
-        $model = new \Modules\System\Model\FormData();
+        $model = new \Modules\Tools\Model\FormData();
         $info = [];
         if ($id) {
             if ($hasType) {
@@ -45,7 +45,7 @@ class Form
             }
             $info = $info->data;
         }
-        $formInfo = \Modules\System\Model\Form::find($formId);
+        $formInfo = \Modules\Tools\Model\Form::find($formId);
         $formData = $formInfo->data;
         $formUI = self::formUI();
         foreach ($formData as $key => $vo) {
@@ -66,7 +66,7 @@ class Form
      */
     public static function saveForm(int $formId, $data, int $id = 0, string $hasType = ''): bool
     {
-        $formInfo = \Modules\System\Model\Form::find($formId);
+        $formInfo = \Modules\Tools\Model\Form::find($formId);
         $formData = $formInfo->data;
 
         $formUI = self::formUI();
@@ -77,7 +77,7 @@ class Form
                 call_user_func($formUI[$vo['type']]['verify'], $vo, $data[$vo['field']]);
             }
         }
-        $model = new \Modules\System\Model\FormData();
+        $model = new \Modules\Tools\Model\FormData();
         if ($id) {
             if ($hasType) {
                 $info = $model->where('form_id', $formId)->where('has_id', $id)->where('has_type', $hasType)->first();
@@ -109,7 +109,7 @@ class Form
      */
     public static function delForm($id, string $hasType = ''): bool
     {
-        $model = new \Modules\System\Model\FormData();
+        $model = new \Modules\Tools\Model\FormData();
         if ($hasType) {
             $model->where('has_id', $id)->where('has_type', $hasType)->delete();
         } else {

@@ -2,13 +2,13 @@
 
 namespace Modules\Common\Web;
 
-use App\Http\Controllers\Controller;
+use Modules\Common\Web\Base;
 
-class Index extends Controller
+class Index extends Base
 {
 
     public function index()
     {
-        return web_view('index');
+        return $this->view('index');
     }
 }

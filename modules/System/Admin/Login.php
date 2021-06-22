@@ -11,24 +11,6 @@ use Illuminate\Http\Request;
 class Login extends Common
 {
 
-    public function index()
-    {
-        return layout_view();
-    }
+    use \Modules\Common\Manage\Login;
 
-    public function submit(Request $request)
-    {
-        $credentials = $request->only('username', 'password');
-        $status = auth('admin')->attempt(['username' => $credentials['username'], 'password' => $credentials['password']], $request->has('remember'));
-        if ($status) {
-            return app_success('登录成功', [], route('admin.index'));
-        }
-        app_error('账号密码错误');
-    }
-
-    public function logout()
-    {
-        auth('admin')->logout();
-        return redirect(route('admin.login'));
-    }
 }

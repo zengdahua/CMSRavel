@@ -12,14 +12,14 @@ class AppModel extends \Modules\Common\Console\Common\Stub
      *
      * @var string
      */
-    protected $signature = 'app:model {name}';
+    protected $signature = 'app:make-model {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '创建模型';
+    protected $description = '创建数据模型';
 
     /**
      * Create a new command instance.

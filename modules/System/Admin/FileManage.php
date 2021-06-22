@@ -3,8 +3,9 @@
 namespace Modules\System\Admin;
 
 
-class FileManage extends \Modules\Common\Controller\FileManage
+class FileManage extends Common
 {
 
-    protected $hasType = 'admin';
+    use \Modules\Common\Manage\FileManage;
+
 }

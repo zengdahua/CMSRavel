@@ -2,7 +2,14 @@
 
 namespace Modules\System\Admin;
 
-class Upload extends \Modules\Common\Controller\Upload
+class Upload extends Common
 {
-    public $hasType = 'admin';
+    /**
+     * 强制文件驱动
+     * @var string
+     */
+    protected string $driver = '';
+
+
+    use \Modules\Common\Manage\Upload;
 }

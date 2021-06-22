@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Modules\Common\Model\ModelAgent;
+use Modules\Common\Util\View;
 
 /**
  * 表单UI
@@ -381,9 +382,9 @@ class Form
         $assign = array_merge($assign, $this->assign);
 
         if ($this->dialog) {
-            return dialog_view('Common.UI.View.form', $assign)->render();
+            return (new View('Common.UI.View.form', $assign))->render('dialog');
         }
-        return system_view('Common.UI.View.form', $assign)->render();
+        return (new View('Common.UI.View.form', $assign))->render();
     }
 
     /**

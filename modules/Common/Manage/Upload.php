@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Common\Controller;
+namespace Modules\Common\Manage;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\File;
@@ -8,38 +8,46 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-class Upload extends \App\Http\Controllers\Controller
+trait Upload
 {
-
-    /**
-     * 强制文件驱动
-     * @var string
-     */
-    protected $driver;
 
     /**
      * 文件关联类型
      * @var string
      */
-    protected $hasType = 'system';
+    public string $hasType = '';
+
+    /**
+     * 获取关联类型
+     * @return mixed
+     */
+    public function getHasType()
+    {
+        if ($this->hasType) {
+            return $this->hasType;
+        }
+        $parsing = app_parsing();
+        $this->hasType = strtolower($parsing['layer']);
+        return $this->hasType;
+    }
 
     /**
      * 文件上传
-     * @param  Request  $request
+     * @param Request $request
      * @return array|void
      */
     public function ajax(Request $request)
     {
-        $id = (int) $request->get('id') ?: 0;
+        $id = (int)$request->get('id') ?: 0;
         $dirId = module('Common.Model.FileDir')->where('dir_id', $id)->value('dir_id');
         if (empty($dirId)) {
-            $dirId = module('Common.Model.FileDir')->where('has_type', $this->hasType)->orderBy('dir_id',
+            $dirId = module('Common.Model.FileDir')->where('has_type', $this->getHasType())->orderBy('dir_id',
                 'desc')->value('dir_id');
         }
         if (empty($dirId)) {
             $dirId = module('Common.Model.FileDir')->insertGetId([
                 'name' => '默认',
-                'has_type' => $this->hasType
+                'has_type' => $this->getHasType()
             ]);
         }
 
@@ -141,11 +149,11 @@ class Upload extends \App\Http\Controllers\Controller
                     }
                     $image->save($tmpPath);
                 }
-                $path = $file->store('upload/'.date('Y-m-d'), $this->driver);
+                $path = $file->store('upload/' . date('Y-m-d'), $this->driver);
                 if ($path) {
                     $tmp = [
                         'dir_id' => $dirId,
-                        'has_type' => $this->hasType,
+                        'has_type' => $this->getHasType(),
                         'driver' => $this->driver ?: config('filesystems.default'),
                         'url' => Storage::disk($this->driver)->url($path),
                         'path' => $path,
@@ -162,7 +170,7 @@ class Upload extends \App\Http\Controllers\Controller
                 }
             }
         }
-        $data = module('Common.Model.File')->where('has_type', $this->hasType)->whereIn('file_id', $ids)->get([
+        $data = module('Common.Model.File')->where('has_type', $this->getHasType())->whereIn('file_id', $ids)->get([
             'file_id', 'dir_id', 'url', 'title', 'ext', 'size', 'create_time'
         ]);
         $data = $data->map(function ($item) {
@@ -190,12 +198,12 @@ class Upload extends \App\Http\Controllers\Controller
             app_error('没有新增远程图片');
         }
 
-        $dirId = module('Common.Model.FileDir')->where('has_type', $this->hasType)->orderBy('dir_id',
+        $dirId = module('Common.Model.FileDir')->where('has_type', $this->getHasType())->orderBy('dir_id',
             'desc')->value('dir_id');
         if (empty($dirId)) {
             $dirId = module('Common.Model.FileDir')->insertGetId([
                 'name' => '默认',
-                'has_type' => $this->hasType
+                'has_type' => $this->getHasType()
             ]);
         }
 
@@ -212,7 +220,7 @@ class Upload extends \App\Http\Controllers\Controller
                 fclose($tmp);
                 $size = filesize($tmpFile);
                 $mime = mime_content_type($tmpFile);
-                $path = Storage::disk($this->driver)->putFile('upload/'.date('Y-m-d'), $tmpFile);
+                $path = Storage::disk($this->driver)->putFile('upload/' . date('Y-m-d'), $tmpFile);
                 @unlink($tmpFile);
             } catch (GuzzleException $exception) {
                 app_error($exception->getMessage());
@@ -223,11 +231,11 @@ class Upload extends \App\Http\Controllers\Controller
 
             $upload = [
                 'dir_id' => $dirId,
-                'has_type' => $this->hasType,
+                'has_type' => $this->getHasType(),
                 'driver' => $this->driver ?: config('filesystems.default'),
                 'url' => $url,
                 'path' => $path,
-                'title' => pathinfo($vo, PATHINFO_FILENAME).'.'.$ext,
+                'title' => pathinfo($vo, PATHINFO_FILENAME) . '.' . $ext,
                 'ext' => $ext,
                 'mime' => $mime,
                 'size' => $size,

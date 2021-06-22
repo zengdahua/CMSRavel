@@ -189,7 +189,7 @@
                         };
                     },
                     processResults: function (data, params) {
-                        let results = data.result;
+                        let results = data.data;
                         params.page = params.page || 1;
                         return {
                             results: results.data,
@@ -348,7 +348,6 @@
             target: '',
             callback: function (data) {
                 let $text = config.target ? $(config.target) : $($el).parents('.form-input-group').find('input[type="text"]')
-                console.log($text.html())
                 $text.val(data[0].url)
             }
         }

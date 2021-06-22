@@ -13,7 +13,7 @@ class Article extends \Modules\Common\Model\Base
 {
     use SoftDeletes;
     use \Conner\Tagging\Taggable;
-    use \Modules\System\Traits\Form;
+    use \Modules\Common\Traits\Form;
     use \Modules\Common\Traits\Visitor;
 
     protected array $softCascade = ['profiles'];

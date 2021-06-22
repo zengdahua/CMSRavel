@@ -7,16 +7,12 @@ use Modules\Common\UI\Table;
 
 class User extends \Modules\System\Admin\Expend
 {
-
+    public string $roleModel = \Modules\System\Model\SystemRole::class;
     public string $model = \Modules\System\Model\SystemUser::class;
 
-    public $route = 'admin.system.user';
-
-    public $roleModel = \Modules\System\Model\SystemRole::class;
-
-    use \Modules\System\Common\User {
-        \Modules\System\Common\User::table as traitTable;
-        \Modules\System\Common\User::Form as traitForm;
+    use \Modules\Common\Manage\User {
+        \Modules\Common\Manage\User::table as traitTable;
+        \Modules\Common\Manage\User::Form as traitForm;
     }
 
 

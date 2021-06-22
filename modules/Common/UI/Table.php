@@ -21,8 +21,8 @@ use Modules\Common\UI\Table\FilterType;
  */
 class Table
 {
-    public Eloquent $model;
-    public ModelAgent $query;
+    public ?Eloquent $model = null;
+    public ?ModelAgent $query = null;
     protected ?Collection $columns = null;
     protected ?Collection $filters = null;
     protected ?Collection $filtersType = null;
@@ -43,6 +43,7 @@ class Table
     protected array $style = [];
     protected array $assign = [];
     protected ?\Closure $dataCallback = null;
+    protected $data;
 
     /**
      * Table constructor.
@@ -565,9 +566,9 @@ class Table
         ];
         $assign = array_merge($assign, $this->assign);
         if ($this->dialog) {
-            return dialog_view('Common.UI.View.table', $assign)->render();
+            return (new \Modules\Common\Util\View('Common.UI.View.table', $assign))->render('dialog');
         }
-        return system_view('Common.UI.View.table', $assign)->render();
+        return (new \Modules\Common\Util\View('Common.UI.View.table', $assign))->render();
     }
 
     /**
@@ -611,7 +612,7 @@ class Table
             'batch' => (bool)$this->batch
         ];
         return app_success('ok', [
-            'html' => dialog_view('Common.UI.View.table-ajax', $assign)->render(),
+            'html' => (new \Modules\Common\Util\View('Common.UI.View.table-ajax', $assign))->render(),
             'totalPage' => $totalPage,
             'page' => $page
         ]);

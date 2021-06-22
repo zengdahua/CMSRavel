@@ -9,24 +9,14 @@ class App extends \Modules\Common\Console\Common\Stub
      *
      * @var string
      */
-    protected $signature = 'app';
+    protected $signature = 'app:make {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '创建应用';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $description = '创建应用结构';
 
     /**
      * Execute the console command.
@@ -35,20 +25,11 @@ class App extends \Modules\Common\Console\Common\Stub
      */
     public function handle()
     {
-        $name = $this->getAppName('应用名');
+        $name = $this->argument('name');
         $appDir = ucfirst($name);
         if (is_dir(base_path('/modules/' . $appDir))) {
-            $this->error('应用已存在，请更换应用名!');
-            exit;
+            return $this->error('应用已存在，请更换应用名!');
         }
-        $system = 0;
-        if ($this->confirm('该应用是否系统模块?')) {
-            $system = 1;
-        }
-        $title = $this->ask('请输入应用名称(中文)');
-        $auth = $this->ask('请输入应用作者');
-        $desc = $this->ask('请输入应用描述(中文)');
-        $menu = $this->ask('请输入菜单名称(中文)');
         $id = (new \Godruoyi\Snowflake\Snowflake)->id();
         // 创建应用结构
         $this->generatorDir($appDir);
@@ -62,21 +43,21 @@ class App extends \Modules\Common\Console\Common\Stub
         $this->generatorDir($appDir . '/' . 'View/Admin');
         // 创建初始文件
         $this->generatorFile($appDir . '/' . 'Config/Config.php', __DIR__ . '/Tpl/App/Config.stub', [
-            'system' => $system,
-            'title' => $title,
-            'auth' => $auth,
-            'desc' => $desc,
             'id' => $id,
+            'title' => '应用名称',
+            'system' => 0,
+            'auth' => '作者',
+            'desc' => '应用描述',
             'icon' => '',
         ]);
         $this->generatorFile($appDir . '/' . 'Service/Menu.php', __DIR__ . '/Tpl/App/Menu.stub', [
             'appDir' => $appDir,
             'name' => $name,
-            'menu' => $menu,
+            'menu' => '菜单',
             'icon' => '',
         ]);
         $this->generatorFile($appDir . '/' . 'Route/AuthAdmin.php', __DIR__ . '/Tpl/App/AuthAdmin.stub', [
-            'title' => $title,
+            'title' => '应用名称',
             'name' => $name,
         ]);
         $this->info('创建应用成功');

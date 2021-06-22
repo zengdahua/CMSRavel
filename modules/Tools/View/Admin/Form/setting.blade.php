@@ -617,7 +617,7 @@
             }
 
             app.ajax({
-                url: "{{route('admin.system.form.setting.save', ['id' => $id])}}",
+                url: "{{route('admin.tools.form.setting.save', ['id' => $id])}}",
                 type: 'post',
                 notify: false,
                 data: {

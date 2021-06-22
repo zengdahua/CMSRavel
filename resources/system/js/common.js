@@ -50,7 +50,6 @@
      */
     owner.init = function () {
         jsReady('[data-js]', function (element) {
-            console.log('bind')
             owner.bind(element);
         });
         if (window['jsInitAfter'] != undefined && window['jsInitAfter'] != '') {

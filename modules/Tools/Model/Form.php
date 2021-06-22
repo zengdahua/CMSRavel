@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\Model;
+namespace Modules\Tools\Model;
 
 /**
  * Class Form

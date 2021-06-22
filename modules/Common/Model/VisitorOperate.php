@@ -19,9 +19,4 @@ class VisitorOperate extends \Modules\Common\Model\Base
         'params' => 'array',
     ];
 
-    public function admin()
-    {
-        return $this->hasOne(\Modules\System\Model\SystemUser::class, 'user_id', 'has_id');
-    }
-
 }

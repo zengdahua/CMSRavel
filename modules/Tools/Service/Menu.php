@@ -22,6 +22,12 @@ class Menu
                 'params' => ['menu' => $item['menu_id']]
             ];
         })->toArray();
+
+        $curName = request()->route()->getName();
+        $formInfo = [];
+        if (strpos($curName, 'admin.tools.formData', 0) !== false) {
+            $formInfo = \Modules\Tools\Model\Form::find(request()->get('form'));
+        }
         return [
             'tools' => [
                 'name' => '工具',
@@ -44,23 +50,50 @@ class Menu
                                 'name'  => '内容标签',
                                 'url'   => 'admin.tools.tags',
                             ],
-    [
-        'name'  => '模板标记',
-        'url'   => 'admin.tools.mark',
-    ],
-    // Generate Menu Make
+                            [
+                                'name'  => '模板标记',
+                                'url'   => 'admin.tools.mark',
+                            ],
+                            // Generate Menu Make
                         ]
                     ],
                     [
                         'name' => '菜单管理',
-                        'order' => 0,
+                        'order' => 1,
                         'menu' => [
                             ...$menuList
                         ]
                     ],
                 ],
             ],
+            'form' => [
+                'name' => '表单',
+                'icon' => file_get_contents(module_path('System/Static/Image/form.svg')),
+                'hidden' => true,
+                'order' => 1000,
+                'url' => 'admin.tools.form'
+            ],
+            'form_data' => [
+                'name' => $formInfo  ? $formInfo->menu : '表单',
+                'icon' => file_get_contents(module_path('System/Static/Image/form.svg')),
+                'hidden' => true,
+                'order' => 1000,
+                'url' => 'admin.tools.formData',
+                'params' => $formInfo ? ['form' => request()->get('form')] : []
+            ],
+        ];
+    }
 
+    public function getAppMenu()
+    {
+        return [
+            [
+                'name' => '自定义表单',
+                'desc' => '多功能自定义表单功能',
+                'type' => 'tools',
+                'url' => 'admin.tools.form',
+                'icon' => file_get_contents(module_path('System/Static/Image/form.svg'))
+            ]
         ];
     }
 }

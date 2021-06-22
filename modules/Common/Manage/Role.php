@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\Common;
+namespace Modules\Common\Manage;
 
 use Modules\Common\UI\Form;
 use Modules\Common\UI\Table;
@@ -8,31 +8,47 @@ use Modules\Common\UI\Table;
 trait Role
 {
 
+    private function parserData()
+    {
+        $parsing = app_parsing();
+        $route = strtolower($parsing['layer']) . '.' . strtolower($parsing['app']) . '.role';
+        $app = $parsing['app'];
+        $model = '\\Modules\\' . $app . '\\Model\\' . $app . 'Role';
+        return [
+            'route' => $route,
+            'model' => $model
+        ];
+    }
+
     protected function table(): Table
     {
-        $table = new Table(new $this->model());
+        $parser = $this->parserData();
+        $table = new Table(new $parser['model']());
         $table->title('角色管理');
 
         $table->filter('角色名称', 'name', function ($query, $value) {
             $query->where('name', 'like', '%' . $value . '%');
         })->text('请输入角色名称')->quick();
 
-        $table->action()->button('添加', $this->route . '.page');
+        $table->action()->button('添加', $parser['route'] . '.page');
 
         $table->column('角色名称', 'name');
 
         $column = $table->column('操作')->width(200);
-        $column->link('编辑', $this->route . '.page', ['id' => 'role_id']);
-        $column->link('删除', $this->route . '.del')->type('ajax')->data(['type' => 'post']);
+        $column->link('编辑', $parser['route'] . '.page', ['id' => 'role_id']);
+        $column->link('删除', $parser['route'] . '.del')->type('ajax')->data(['type' => 'post']);
         return $table;
     }
 
     public function form(int $id = 0): Form
     {
-        $form = new Form(new $this->model());
+        $parser = $this->parserData();
+        $form = new Form(new $parser['model']());
+        $form->setKey('role_id', $id);
         $form->title('角色信息');
-        $form->card(function ($form) use ($id) {
-            $this->formInner($form);
+        $info = $form->info();
+        $form->card(function ($form) use ($info) {
+            $this->formInner($form, $info);
         });
 
         $form->script(function () {
@@ -61,7 +77,7 @@ trait Role
         return $form;
     }
 
-    public function formInner($form)
+    public function formInner($form, $info)
     {
         $form->text('角色名', 'name')->verify([
             'required',
@@ -70,9 +86,10 @@ trait Role
             'required' => '请填写角色名',
             'min' => '用户名不能少于2位',
         ]);
-        $form->html('角色权限', function ($info) {
+        $form->html('角色权限', function () use ($info) {
+            $parsing = app_parsing();
             $purview = $info->purview ?: [];
-            $data = module('Common.Service.Auth')->getAuthAll('store');
+            $data = module('Common.Service.Auth')->getAuthAll(strtolower($parsing['layer']));
             $html = [];
             foreach ($data as $app) {
                 $html[] = '

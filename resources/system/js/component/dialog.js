@@ -207,7 +207,6 @@
         };
 
         let open = function () {
-            console.log('dialog-open');
             if (config.type == 'iframe') {
                 show('<iframe src="' + config.url + '" width="100%" height="' + config.height + '" frameborder="0"></iframe>');
             }

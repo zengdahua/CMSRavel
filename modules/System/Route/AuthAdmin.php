@@ -19,7 +19,7 @@ Route::group(['public' => true], function () {
     Route::get('system/visitorApi/loadTotal', ['uses' => 'Modules\System\Admin\VisitorApi@loadTotal', 'desc' => '访问统计'])->name('admin.system.visitorApi.loadTotal');
     Route::get('system/visitorApi/loadDelay', ['uses' => 'Modules\System\Admin\VisitorApi@loadDelay', 'desc' => '延迟统计'])->name('admin.system.visitorApi.loadDelay');
     Route::get('system/visitorOperate/loadData', ['uses' => 'Modules\System\Admin\visitorOperate@loadData', 'desc' => '操作日志'])->name('admin.system.visitorOperate.loadData');
-    Route::get('system/visitorViews/info', ['uses' => 'Modules\System\Admin\VisitorViews@info', 'desc' => '访客详情'])->name('admin.system.VisitorViews.info');
+    Route::get('system/visitorViews/info', ['uses' => 'Modules\Common\Manage\VisitorViews@info', 'desc' => '访客详情'])->name('admin.system.VisitorViews.info');
 
 });
 
@@ -86,26 +86,6 @@ Route::group([
         'auth_group' => '应用中心'
     ], function () {
         Route::get('application', ['uses' => 'Modules\System\Admin\Application@index', 'desc' => '列表'])->name('admin.system.application');
-    });
-
-    /**
-     * 表单
-     */
-    Route::group([
-        'auth_group' => '自定义表单'
-    ], function () {
-
-        Route::manage(\Modules\System\Admin\Form::class)->only(['index', 'data', 'page', 'save', 'del'])->make();
-
-        Route::get('form/setting/{id}', ['uses' => 'Modules\System\Admin\Form@setting', 'desc' => '设置'])->name('admin.system.form.setting');
-        Route::post('form/setting/{id}', ['uses' => 'Modules\System\Admin\Form@settingSave', 'desc' => '设置数据'])->name('admin.system.form.setting.save');
-
-    });
-
-    Route::group([
-        'auth_group' => '表单数据'
-    ], function () {
-        Route::manage(\Modules\System\Admin\formData::class)->only(['index', 'data', 'page', 'save', 'del'])->make();
     });
 
     /**

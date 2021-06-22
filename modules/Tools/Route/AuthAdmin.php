@@ -7,6 +7,20 @@ Route::group([
     'auth_app' => '扩展工具'
 ], function () {
     Route::group([
+        'auth_group' => '自定义表单'
+    ], function () {
+        Route::manage(\Modules\Tools\Admin\Form::class)->only(['index', 'data', 'page', 'save', 'del'])->make();
+        Route::get('form/setting/{id}', ['uses' => 'Modules\Tools\Admin\Form@setting', 'desc' => '设置'])->name('admin.tools.form.setting');
+        Route::post('form/setting/{id}', ['uses' => 'Modules\Tools\Admin\Form@settingSave', 'desc' => '设置数据'])->name('admin.tools.form.setting.save');
+    });
+
+    Route::group([
+        'auth_group' => '表单数据'
+    ], function () {
+        Route::manage(\Modules\Tools\Admin\FormData::class)->only(['index', 'data', 'page', 'save', 'del'])->make();
+    });
+
+    Route::group([
         'auth_group' => '菜单管理'
     ], function () {
         Route::manage(\Modules\Tools\Admin\Menu::class)->only(['index', 'data', 'page', 'save', 'del'])->make();

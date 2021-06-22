@@ -13,11 +13,6 @@ class Menu
      */
     public function getAdminMenu()
     {
-        $curName = request()->route()->getName();
-        $formInfo = [];
-        if (strpos($curName, 'admin.system.formData', 0) !== false) {
-            $formInfo = \Modules\System\Model\Form::find(request()->get('form'));
-        }
         return [
             'index' => [
                 'name' => '首页',
@@ -128,34 +123,6 @@ class Menu
                 'url' => 'admin.system.application',
                 'order' => 200,
             ],
-            'form' => [
-                'name' => '表单',
-                'icon' => file_get_contents(module_path('System/Static/Image/form.svg')),
-                'hidden' => true,
-                'order' => 1000,
-                'url' => 'admin.system.form'
-            ],
-            'form_data' => [
-                'name' => $formInfo  ? $formInfo->menu : '表单',
-                'icon' => file_get_contents(module_path('System/Static/Image/form.svg')),
-                'hidden' => true,
-                'order' => 1000,
-                'url' => 'admin.system.formData',
-                'params' => $formInfo ? ['form' => request()->get('form')] : []
-            ],
-        ];
-    }
-
-    public function getAppMenu()
-    {
-        return [
-            [
-                'name' => '自定义表单',
-                'desc' => '多功能自定义表单功能',
-                'type' => 'tools',
-                'url' => 'admin.system.form',
-                'icon' => file_get_contents(module_path('System/Static/Image/form.svg'))
-            ]
         ];
     }
 }

@@ -8,7 +8,7 @@
 	}
 		.select2-container .select2-selection--single .select2-selection__rendered {
 			/* DIV inside Selection box with text, clear button and arrow down*/
-			@apply block pl-1 pr-6 truncate w-40;
+			@apply pl-1 pr-6 truncate w-40;
 		}
 		.select2-container .select2-selection--single .select2-selection__clear {
 			/* The DIV where the X is housing to clear the chosen option */
@@ -256,7 +256,7 @@
     @apply cursor-text select-none bg-white border border-gray-400 shadow-sm rounded outline-none px-3 flex flex-wrap items-center justify-start text-sm;
 
     & .select2-selection__rendered {
-        @apply flex flex-wrap;
+        @apply flex flex-wrap block;
     }
 
     & .select2-selection__clear {

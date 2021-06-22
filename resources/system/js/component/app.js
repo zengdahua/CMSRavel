@@ -45,7 +45,6 @@
                     }
                 }
                 axios(axiosConfig).then((response) => {
-                    console.log(response.data)
                     let url = response.headers['x-location'];
                     let msg = response.data.message || '系统暂无响应内容';
                     let result = response.data.data;

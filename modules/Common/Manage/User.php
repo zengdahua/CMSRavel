@@ -1,17 +1,30 @@
 <?php
 
-namespace Modules\System\Common;
+namespace Modules\Common\Manage;
 
 use Illuminate\Validation\Rule;
 
 trait User
 {
 
+    private function parserData()
+    {
+        $parsing = app_parsing();
+        $route = strtolower($parsing['layer']) . '.' . strtolower($parsing['app']) . '.user';
+        $app = $parsing['app'];
+        $model = '\\Modules\\' . $app . '\\Model\\' . $app . 'User';
+        return [
+            'route' => $route,
+            'model' => $model,
+        ];
+    }
+
     protected function table()
     {
-        $table = new \Modules\Common\UI\Table(new $this->model());
+        $parser = $this->parserData();
+        $table = new \Modules\Common\UI\Table(new $parser['model']());
         $table->title('用户管理');
-        $table->action()->button('添加', $this->route . '.page')->type('dialog');
+        $table->action()->button('添加', $parser['route'] . '.page')->type('dialog');
 
         $table->column('#', 'user_id')->width(80);
         $table->column('用户名', 'username');
@@ -26,8 +39,8 @@ trait User
         ]);
 
         $column = $table->column('操作')->width(200);
-        $column->link('编辑', $this->route .  '.page', ['id' => 'user_id'])->type('dialog');
-        $column->link('删除', $this->route .  '.del', ['id' => 'user_id'])->type('ajax')->data(['type' => 'post']);
+        $column->link('编辑', $parser['route'] . '.page', ['id' => 'user_id'])->type('dialog');
+        $column->link('删除', $parser['route'] . '.del', ['id' => 'user_id'])->type('ajax')->data(['type' => 'post']);
 
         $table->filter('用户名', 'username', function ($query, $value) {
             $query->where('username', 'like', '%' . $value . '%');
@@ -39,13 +52,14 @@ trait User
 
     public function form(int $id = 0)
     {
-        $form = new \Modules\Common\UI\Form(new $this->model());
+        $parser = $this->parserData();
+        $form = new \Modules\Common\UI\Form(new $parser['model']());
         $form->dialog(true);
 
         $form->text('用户名', 'username')->verify([
             'required',
             'min:4',
-            Rule::unique((new $this->model)->getTable())->ignore($id, 'user_id'),
+            Rule::unique((new $parser['model'])->getTable())->ignore($id, 'user_id'),
         ], [
             'required' => '请填写用户名',
             'unique' => '用户名不能重复',
@@ -69,6 +83,16 @@ trait User
         ]);
 
         return $form;
+    }
+
+    public function dataSearch()
+    {
+        return ['nickname', 'username'];
+    }
+
+    public function dataField()
+    {
+        return ['username as name'];
     }
 
 }

@@ -1,14 +1,32 @@
 <?php
 
-namespace Modules\Common\Controller;
+namespace Modules\Common\Manage;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class FileManage extends \App\Http\Controllers\Controller
+trait FileManage
 {
 
-    protected $hasType = 'admin';
+    /**
+     * 文件关联类型
+     * @var string
+     */
+    public string $hasType = '';
+
+    /**
+     * 获取关联类型
+     * @return mixed
+     */
+    public function getHasType()
+    {
+        if ($this->hasType) {
+            return $this->hasType;
+        }
+        $parsing = app_parsing();
+        $this->hasType = strtolower($parsing['layer']);
+        return $this->hasType;
+    }
 
     public function handle(Request $request)
     {
@@ -37,7 +55,13 @@ class FileManage extends \App\Http\Controllers\Controller
         return app_success('ok', $data);
     }
 
-    private function getFile($dirId, $query = '', $filter = 'all')
+    /**
+     * @param $dirId
+     * @param string $query
+     * @param string $filter
+     * @return array
+     */
+    private function getFile($dirId, $query = '', $filter = 'all'): array
     {
         $totalPage = 1;
         $page = 1;
@@ -48,7 +72,7 @@ class FileManage extends \App\Http\Controllers\Controller
             'document' => 'doc,docx,xls,xlsx,pptx,ppt,csv,pdf',
         ];
         if ($dirId) {
-            $data = module('Common.Model.File')->where('has_type', $this->hasType)->where('dir_id', $dirId);
+            $data = module('Common.Model.File')->where('has_type', $this->getHasType())->where('dir_id', $dirId);
             if ($query) {
                 $data = $data->where('title', 'like', '%' . $query . '%');
             }
@@ -111,19 +135,26 @@ class FileManage extends \App\Http\Controllers\Controller
         ];
     }
 
+    /**
+     * @return mixed
+     */
     private function getFolder()
     {
-        return module('Common.Model.FileDir')->where('has_type', $this->hasType)->get()->toArray();
+        return module('Common.Model.FileDir')->where('has_type', $this->getHasType())->get()->toArray();
     }
 
-    private function createFolder($name)
+    /**
+     * @param $name
+     * @return array
+     */
+    private function createFolder($name): array
     {
         if (empty($name)) {
             trigger_error('请输入目录名称');
         }
         $file = module('Common.Model.FileDir');
         $file->name = $name;
-        $file->has_type = $this->hasType;
+        $file->has_type = $this->getHasType();
         $file->save();
         return [
             'id' => $file->dir_id,
@@ -131,13 +162,17 @@ class FileManage extends \App\Http\Controllers\Controller
         ];
     }
 
-    private function deleteFolder(int $id)
+    /**
+     * @param int $id
+     * @return array
+     */
+    private function deleteFolder(int $id): array
     {
         if (empty($id)) {
             trigger_error('请选择目录');
         }
 
-        $files = module('Common.Model.File')->where('has_type', $this->hasType)->where('dir_id', $id)->get([
+        $files = module('Common.Model.File')->where('has_type', $this->getHasType())->where('dir_id', $id)->get([
             'driver', 'path'
         ]);
         $files->map(function ($vo) {
@@ -148,13 +183,17 @@ class FileManage extends \App\Http\Controllers\Controller
         return [];
     }
 
-    private function deleteFile($ids)
+    /**
+     * @param $ids
+     * @return array
+     */
+    private function deleteFile($ids): array
     {
         $ids = array_filter(explode(',', $ids));
         if (empty($ids)) {
             trigger_error('请选择删除文件');
         }
-        $files = module('Common.Model.File')->where('has_type', $this->hasType)->whereIn('dir_id', $ids)->get([
+        $files = module('Common.Model.File')->where('has_type', $this->getHasType())->whereIn('dir_id', $ids)->get([
             'driver', 'path'
         ]);
         $files->map(function ($vo) {

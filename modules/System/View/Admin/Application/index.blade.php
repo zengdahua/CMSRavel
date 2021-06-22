@@ -35,7 +35,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 ">
             @foreach($formList as $vo)
                 <div>
-                    <a href="{{route('admin.system.formData', ['form' => $vo->form_id])}}" class="flex items-center space-x-2 shadow bg-gradient-to-r from-purple-900 to-purple-800 p-4 rounded text-white hover:ring hover:ring-purple-900 hover:ring-offset-2 ">
+                    <a href="{{route('admin.tools.formData', ['form' => $vo->form_id])}}" class="flex items-center space-x-2 shadow bg-gradient-to-r from-purple-900 to-purple-800 p-4 rounded text-white hover:ring hover:ring-purple-900 hover:ring-offset-2 ">
                     <div class="flex-none w-10 h-10">
                             {!! file_get_contents(module_path('System/Static/Image/form.svg')) !!}
                         </div>

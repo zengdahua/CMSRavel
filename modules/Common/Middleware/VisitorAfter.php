@@ -58,6 +58,7 @@ class VisitorAfter
         $data = [
             'has_type' => $hasType,
             'has_id' => $hasId,
+            'username' => auth($hasType)->user()->username,
             'method' => $request->method(),
             'route' => $request->getPathInfo(),
             'name' => $request->route()->getAction('as'),

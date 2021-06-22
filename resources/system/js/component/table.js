@@ -423,7 +423,6 @@
                     totalPages: data.result.page
                 })).on('page', function (evt, page) {
                     pageId = page
-                    console.log('pages')
                     loadData()
                 })
                 pageData = data.result.data

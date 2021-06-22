@@ -1,19 +1,19 @@
 <?php
 
-namespace Modules\System\Admin;
+namespace Modules\Tools\Admin;
 
 use Illuminate\Validation\Rule;
 
 class Form extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Modules\System\Model\Form::class;
+    public string $model = \Modules\Tools\Model\Form::class;
 
     protected function table()
     {
         $table = new \Modules\Common\UI\Table(new $this->model());
         $table->title('自定义表单');
-        $table->action()->button('添加', 'admin.system.form.page')->type('dialog');
+        $table->action()->button('添加', 'admin.tools.form.page')->type('dialog');
 
         $table->filter('名称', 'name', function ($query, $value) {
             $query->where('name', 'like', '%'.$value.'%');
@@ -23,9 +23,9 @@ class Form extends \Modules\System\Admin\Expend
         $table->column('名称', 'name');
 
         $column = $table->column('操作')->width(180);
-        $column->link('设计器', 'admin.system.form.setting', ['id' => 'form_id']);
-        $column->link('编辑', 'admin.system.form.page', ['id' => 'form_id'])->type('dialog');
-        $column->link('删除', 'admin.system.form.del', ['id' => 'form_id'])->type('ajax')->data(['type' => 'post']);
+        $column->link('设计器', 'admin.tools.form.setting', ['id' => 'form_id']);
+        $column->link('编辑', 'admin.tools.form.page', ['id' => 'form_id'])->type('dialog');
+        $column->link('删除', 'admin.tools.form.del', ['id' => 'form_id'])->type('ajax')->data(['type' => 'post']);
 
         return $table;
     }
@@ -71,9 +71,9 @@ class Form extends \Modules\System\Admin\Expend
     public function settingSave(int $id)
     {
         $data = request()->input('data');
-        $model = new \Modules\System\Model\Form();
+        $model = new \Modules\Tools\Model\Form();
         $model->where('form_id', $id)->update(['data' => $data]);
-        return app_success('保存表单数据成功', [], route('admin.system.form'));
+        return app_success('保存表单数据成功', [], route('admin.tools.form'));
     }
 
 }

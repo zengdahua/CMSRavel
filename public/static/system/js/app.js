@@ -284,7 +284,6 @@
      */
     owner.init = function () {
         jsReady('[data-js]', function (element) {
-            console.log('bind')
             owner.bind(element);
         });
         if (window['jsInitAfter'] != undefined && window['jsInitAfter'] != '') {
@@ -388,7 +387,6 @@
                     }
                 }
                 axios(axiosConfig).then((response) => {
-                    console.log(response.data)
                     let url = response.headers['x-location'];
                     let msg = response.data.message || '系统暂无响应内容';
                     let result = response.data.data;
@@ -920,7 +918,6 @@
         };
 
         let open = function () {
-            console.log('dialog-open');
             if (config.type == 'iframe') {
                 show('<iframe src="' + config.url + '" width="100%" height="' + config.height + '" frameborder="0"></iframe>');
             }
@@ -1480,7 +1477,6 @@
                     totalPages: data.result.page
                 })).on('page', function (evt, page) {
                     pageId = page
-                    console.log('pages')
                     loadData()
                 })
                 pageData = data.result.data
@@ -1711,7 +1707,7 @@
                         };
                     },
                     processResults: function (data, params) {
-                        let results = data.result;
+                        let results = data.data;
                         params.page = params.page || 1;
                         return {
                             results: results.data,
@@ -1870,7 +1866,6 @@
             target: '',
             callback: function (data) {
                 let $text = config.target ? $(config.target) : $($el).parents('.form-input-group').find('input[type="text"]')
-                console.log($text.html())
                 $text.val(data[0].url)
             }
         }

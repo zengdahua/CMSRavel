@@ -1,11 +1,12 @@
 <?php
 
-namespace Modules\Common\Controller;
+namespace Modules\Common\Manage;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 /**
+ * 管理端口扩展功能接口
  * Trait Expend
  * @package Modules\Common\Controller
  * @method \Modules\Common\UI\Table table()

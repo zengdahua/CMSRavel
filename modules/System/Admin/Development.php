@@ -10,7 +10,6 @@ class Development extends Common
 
     public function index()
     {
-
         $startTime = strtotime('-6 day');
         // 访问量
         $apiNumData = app(\Modules\Common\Model\VisitorApi::class)

@@ -10,17 +10,15 @@ class Article extends Base
     public function index($id)
     {
         $classInfo = \Modules\Article\Model\ArticleClass::find($id);
-        return web_view('articleList', [
-            'classInfo' => $classInfo ?: collect()
-        ]);
+        $this->assign('classInfo', $classInfo ?: collect());
+        return $this->view('articleList');
     }
 
     public function info($id)
     {
         $info = \Modules\Article\Model\Article::find($id);
-        return web_view('articleInfo', [
-            'info' => $info ?: collect()
-        ]);
+        $this->assign('articleInfo', $info ?: collect());
+        return $this->view('articleInfo');
     }
 
     public function search()
@@ -28,19 +26,17 @@ class Article extends Base
         $keyword = request()->get('keyword');
         $classId = request()->get('class');
         $classInfo = \Modules\Article\Model\ArticleClass::find($classId);
-        return web_view('articleSearch', [
-            'keyword' => $keyword,
-            'classInfo' => $classInfo
-        ]);
+        $this->assign('keyword', $keyword);
+        $this->assign('classInfo', $classInfo);
+        return $this->view('articleSearch');
     }
 
     public function tags($tag)
     {
         $classId = request()->get('class');
         $classInfo = \Modules\Article\Model\ArticleClass::find($classId);
-        return web_view('articleTags', [
-            'tag' => $tag,
-            'classInfo' => $classInfo,
-        ]);
+        $this->assign('tag', $tag);
+        $this->assign('classInfo', $classInfo);
+        return $this->view('articleTags');
     }
 }

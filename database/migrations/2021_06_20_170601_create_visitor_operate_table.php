@@ -17,6 +17,7 @@ class CreateVisitorOperateTable extends Migration
             $table->increments('operate_id');
             $table->char('has_type', 50)->nullable()->default('')->index('has_type')->comment('关联类型');
             $table->integer('has_id')->default(0)->index('has_id')->comment('关联id');
+            $table->string('username', 100)->nullable()->default('')->index('username')->comment('用户名');
             $table->char('method', 6)->nullable()->default('')->index('method')->comment('动作');
             $table->string('route', 250)->nullable()->default('')->index('route')->comment('路由');
             $table->char('name', 50)->nullable()->default('')->index('name')->comment('名称');
