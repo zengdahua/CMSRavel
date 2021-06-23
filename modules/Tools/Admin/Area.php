@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\Admin;
+namespace Modules\Tools\Admin;
 
 use Illuminate\Support\Facades\DB;
 use Duxravel\Core\Util\Excel;
@@ -8,14 +8,14 @@ use Duxravel\Core\Util\Excel;
 class Area extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Duxravel\Core\Model\ToolsArea::class;
+    public string $model = \Duxravel\Core\Model\Area::class;
 
     protected function table()
     {
         $table = new \Duxravel\Core\UI\Table(new $this->model());
         $table->title('地区数据');
 
-        $table->action()->button('导入', 'admin.system.area.import')->type('dialog');
+        $table->action()->button('导入', 'admin.tools.area.import')->type('dialog');
 
         $table->filter('名称', 'name', function ($query, $value) {
             $query->where('name', 'like', '%' . $value . '%');
@@ -25,7 +25,7 @@ class Area extends \Modules\System\Admin\Expend
         $table->column('名称', 'name');
 
         $column = $table->column('操作')->width(80);
-        $column->link('删除', 'admin.system.area.del', ['id' => 'area_id'])->type('ajax')->data(['type' => 'post']);
+        $column->link('删除', 'admin.tools.area.del', ['id' => 'area_id'])->type('ajax')->data(['type' => 'post']);
 
         return $table;
     }
@@ -33,7 +33,7 @@ class Area extends \Modules\System\Admin\Expend
     public function import()
     {
         $form = new \Duxravel\Core\UI\Form(collect());
-        $form->action(route('admin.system.area.importData'));
+        $form->action(route('admin.tools.area.importData'));
         $form->dialog(true);
         $form->file('导入数据', 'file')->verify([
             'required',
@@ -99,7 +99,7 @@ class Area extends \Modules\System\Admin\Expend
             DB::table('system_area')->insert(array_values($vo));
         }
 
-        return app_success('导入数据成功', [], route('admin.system.area'));
+        return app_success('导入数据成功', [], route('admin.tools.area'));
 
     }
 

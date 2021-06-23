@@ -64,6 +64,17 @@ class Menu
                             ...$menuList
                         ]
                     ],
+                    [
+                        'name' => '地区',
+                        'order' => 200,
+                        'menu' => [
+                            [
+                                'name' => '地区数据',
+                                'url' => 'admin.tools.area',
+                                'order' => 0
+                            ],
+                        ]
+                    ],
                 ],
             ],
             'form' => [

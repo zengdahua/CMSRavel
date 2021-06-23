@@ -6,6 +6,16 @@ Route::group([
     'prefix'   => 'tools',
     'auth_app' => '扩展工具'
 ], function () {
+
+    Route::group([
+        'auth_group' => '地区数据'
+    ], function () {
+        Route::get('area', ['uses' => 'Modules\Tools\Admin\Area@index', 'desc' => '列表'])->name('admin.tools.area');
+        Route::get('area/add', ['uses' => 'Modules\Tools\Admin\Area@import', 'desc' => '导入'])->name('admin.tools.area.import');
+        Route::post('area/store', ['uses' => 'Modules\Tools\Admin\Area@importData', 'desc' => '导入数据'])->name('admin.tools.area.importData');
+        Route::post('area/del/{id?}', ['uses' => 'Modules\Tools\Admin\Area@del', 'desc' => '删除'])->name('admin.tools.area.del');
+    });
+
     Route::group([
         'auth_group' => '自定义表单'
     ], function () {

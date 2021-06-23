@@ -103,17 +103,6 @@ class Menu
                             ],
                         ]
                     ],
-                    [
-                        'name' => '地区',
-                        'order' => 203,
-                        'menu' => [
-                            [
-                                'name' => '地区数据',
-                                'url' => 'admin.system.area',
-                                'order' => 0
-                            ],
-                        ]
-                    ],
 
                 ],
             ],

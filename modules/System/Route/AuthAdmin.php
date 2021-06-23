@@ -97,17 +97,5 @@ Route::group([
         Route::manage(\Modules\System\Admin\Api::class)->only(['index', 'data', 'page', 'save', 'del'])->make();
         Route::post('api/token/{id?}', ['uses' => 'Modules\System\Admin\Api@token', 'desc' => '更换TOKEN'])->name('admin.system.api.token');
     });
-
-    /**
-     * 地区库管理
-     */
-    Route::group([
-        'auth_group' => '地区数据'
-    ], function () {
-        Route::get('area', ['uses' => 'Modules\System\Admin\Area@index', 'desc' => '列表'])->name('admin.system.area');
-        Route::get('area/add', ['uses' => 'Modules\System\Admin\Area@import', 'desc' => '导入'])->name('admin.system.area.import');
-        Route::post('area/store', ['uses' => 'Modules\System\Admin\Area@importData', 'desc' => '导入数据'])->name('admin.system.area.importData');
-        Route::post('area/del/{id?}', ['uses' => 'Modules\System\Admin\Area@del', 'desc' => '删除'])->name('admin.system.area.del');
-    });
 });
 
