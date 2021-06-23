@@ -2,11 +2,11 @@
 
 namespace Modules\Article\Admin;
 
-use Modules\Common\Composer\AppPlugin;
-use Modules\Common\Util\Tree;
-use Modules\Common\UI\Form;
-use Modules\Common\UI\Table;
-use Modules\Common\UI\Widget;
+use Duxravel\Core\Composer\AppPlugin;
+use Duxravel\Core\Util\Tree;
+use Duxravel\Core\UI\Form;
+use Duxravel\Core\UI\Table;
+use Duxravel\Core\UI\Widget;
 
 class Article extends ArticleExpend
 {
@@ -80,10 +80,10 @@ class Article extends ArticleExpend
      * @param null $id
      * @return Form
      */
-    public function form($id = null): \Modules\Common\UI\Form
+    public function form($id = null): \Duxravel\Core\UI\Form
     {
         $model = new $this->model();
-        $form = new \Modules\Common\UI\Form($model);
+        $form = new \Duxravel\Core\UI\Form($model);
         $form->title('文章信息');
         $form->action(route('admin.article.article.save', ['model' => $this->modelId, 'id' => $id]));
 

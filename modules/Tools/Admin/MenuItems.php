@@ -3,9 +3,9 @@
 namespace Modules\Tools\Admin;
 
 use Illuminate\Support\Facades\Log;
-use Modules\Common\Util\Tree;
-use Modules\Common\UI\Form;
-use Modules\Common\UI\Table;
+use Duxravel\Core\Util\Tree;
+use Duxravel\Core\UI\Form;
+use Duxravel\Core\UI\Table;
 use Modules\Tools\Model\ToolsMenuItems;
 
 class MenuItems extends MenuExpend
@@ -40,10 +40,10 @@ class MenuItems extends MenuExpend
      * @param null $id
      * @return Form
      */
-    public function form($id = 0): \Modules\Common\UI\Form
+    public function form($id = 0): \Duxravel\Core\UI\Form
     {
         $model = new $this->model();
-        $form = new \Modules\Common\UI\Form($model);
+        $form = new \Duxravel\Core\UI\Form($model);
         $form->dialog(true);
         $form->action(route('admin.tools.menuItems.save', ['menu' => $this->menuId, 'id' => $id]));
 

@@ -4,7 +4,7 @@ namespace Modules\Article\Service;
 
 use Modules\Article\Model\Article;
 use Modules\Article\Model\ArticleClass;
-use Modules\Common\Util\Tree;
+use Duxravel\Core\Util\Tree;
 
 /**
  * 类型接口

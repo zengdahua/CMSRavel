@@ -6,7 +6,7 @@ namespace Modules\Article\Model;
  * class ArticleAttribute
  * @package Modules\Article\Model
  */
-class ArticleAttribute extends \Modules\Common\Model\Base
+class ArticleAttribute extends \Duxravel\Core\Model\Base
 {
 
     protected $table = 'article_attribute';

@@ -12,7 +12,7 @@ class Development extends Common
     {
         $startTime = strtotime('-6 day');
         // 访问量
-        $apiNumData = app(\Modules\Common\Model\VisitorApi::class)
+        $apiNumData = app(\Duxravel\Core\Model\VisitorApi::class)
             ->select(DB::raw('SUM(pv) as value, date as label'))
             ->where('date', '>=', date('Y-m-d', $startTime))
             ->groupBy('date')
@@ -22,14 +22,14 @@ class Development extends Common
             return $item;
         });
         $this->data('apiNum', $apiNumData);
-        $apiNumChart = app(\Modules\Common\Util\ApexCharts::class)->area($apiNumData->toArray())->type('day', ['start' => date('Y-m-d', $startTime)])->render('api-num-chart', function ($config) {
+        $apiNumChart = app(\Duxravel\Core\Util\ApexCharts::class)->area($apiNumData->toArray())->type('day', ['start' => date('Y-m-d', $startTime)])->render('api-num-chart', function ($config) {
             \Arr::set($config, 'chart.height', 200);
             return $config;
         });
         $this->assign('apiNumChart', $apiNumChart);
 
         // 访问延迟
-        $apiTimeData = app(\Modules\Common\Model\VisitorApi::class)
+        $apiTimeData = app(\Duxravel\Core\Model\VisitorApi::class)
             ->select(DB::raw('MAX(max_time) as max, MAX(min_time) as min, date as label'))
             ->where('date', '>=', date('Y-m-d', $startTime))
             ->groupBy('date')
@@ -45,14 +45,14 @@ class Development extends Common
             return $item;
         })->toArray();
         $this->data('apiTime', collect($apiTimeMax));
-        $apiTimeChart = app(\Modules\Common\Util\ApexCharts::class)->line(array_merge($apiTimeMax, $apiTimeMin))->type('day', ['start' => date('Y-m-d', $startTime)])->render('api-time-chart', function ($config) {
+        $apiTimeChart = app(\Duxravel\Core\Util\ApexCharts::class)->line(array_merge($apiTimeMax, $apiTimeMin))->type('day', ['start' => date('Y-m-d', $startTime)])->render('api-time-chart', function ($config) {
             \Arr::set($config, 'chart.height', 200);
             return $config;
         });
         $this->assign('apiTimeChart', $apiTimeChart);
 
         // 文件上传
-        $fileNumData = app(\Modules\Common\Model\File::class)
+        $fileNumData = app(\Duxravel\Core\Model\File::class)
             ->select(DB::raw('COUNT(*) as value, FROM_UNIXTIME(create_time,"%Y-%m-%d")  as label'))
             ->where('create_time', '>=', strtotime(date('Y-m-d', $startTime)))
             //->where('has_type', 'admin')
@@ -63,21 +63,21 @@ class Development extends Common
             return $item;
         });
         $this->data('fileNum', $fileNumData);
-        $fileNumChart = app(\Modules\Common\Util\ApexCharts::class)->bar($fileNumData->toArray())->type('day', ['start' => date('Y-m-d', $startTime), 'stop' => date('Y-m-d')])->render('file-num-chart', function ($config) {
+        $fileNumChart = app(\Duxravel\Core\Util\ApexCharts::class)->bar($fileNumData->toArray())->type('day', ['start' => date('Y-m-d', $startTime), 'stop' => date('Y-m-d')])->render('file-num-chart', function ($config) {
             \Arr::set($config, 'chart.height', 200);
             return $config;
         });
         $this->assign('fileNumChart', $fileNumChart);
 
         // 操作日志
-        $operateData = app(\Modules\Common\Model\VisitorOperate::class)
+        $operateData = app(\Duxravel\Core\Model\VisitorOperate::class)
             ->select(DB::raw('COUNT(*) as value, FROM_UNIXTIME(create_time,"%Y-%m-%d")  as label'))
             ->where('create_time', '>=', strtotime(date('Y-m-d', $startTime)))
             ->where('has_type', 'admin')
             ->groupBy(DB::raw('FROM_UNIXTIME(create_time,"%Y-%m-%d")'))
             ->get();
         $this->data('logNum', $operateData);
-        $logNumChart = app(\Modules\Common\Util\ApexCharts::class)->bar($operateData->toArray())->type('day', ['start' => date('Y-m-d', $startTime), 'stop' => date('Y-m-d')])->render('log-num-chart', function ($config) {
+        $logNumChart = app(\Duxravel\Core\Util\ApexCharts::class)->bar($operateData->toArray())->type('day', ['start' => date('Y-m-d', $startTime), 'stop' => date('Y-m-d')])->render('log-num-chart', function ($config) {
             \Arr::set($config, 'chart.height', 200);
             return $config;
         });

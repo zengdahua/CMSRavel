@@ -3,16 +3,16 @@
 namespace Modules\System\Admin;
 
 use Illuminate\Validation\Rule;
-use Modules\Common\UI\Table;
+use Duxravel\Core\UI\Table;
 
 class User extends \Modules\System\Admin\Expend
 {
     public string $roleModel = \Modules\System\Model\SystemRole::class;
     public string $model = \Modules\System\Model\SystemUser::class;
 
-    use \Modules\Common\Manage\User {
-        \Modules\Common\Manage\User::table as traitTable;
-        \Modules\Common\Manage\User::Form as traitForm;
+    use \Duxravel\Core\Manage\User {
+        \Duxravel\Core\Manage\User::table as traitTable;
+        \Duxravel\Core\Manage\User::Form as traitForm;
     }
 
 
@@ -31,7 +31,7 @@ class User extends \Modules\System\Admin\Expend
         return $table;
     }
 
-    protected function form(int $id = 0): \Modules\Common\UI\Form
+    protected function form(int $id = 0): \Duxravel\Core\UI\Form
     {
         $form = $this->traitForm($id);
         $form->select('角色', 'role_ids', function () {

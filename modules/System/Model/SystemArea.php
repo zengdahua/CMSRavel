@@ -6,7 +6,7 @@ namespace Modules\System\Model;
  * Class SystemArea
  * @package Modules\System\Model
  */
-class SystemArea extends \Modules\Common\Model\Base
+class SystemArea extends \Duxravel\Core\Model\Base
 {
 
     protected $table = 'system_area';

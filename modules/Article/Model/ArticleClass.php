@@ -6,7 +6,7 @@ namespace Modules\Article\Model;
  * Class ArticleClass
  * @package Modules\Article\Model
  */
-class ArticleClass extends \Modules\Common\Model\Base
+class ArticleClass extends \Duxravel\Core\Model\Base
 {
     use \Kalnoy\Nestedset\NodeTrait;
 

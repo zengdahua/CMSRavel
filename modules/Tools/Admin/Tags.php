@@ -2,7 +2,7 @@
 
 namespace Modules\Tools\Admin;
 
-use Modules\Common\UI\Table;
+use Duxravel\Core\UI\Table;
 use Modules\Tools\Model\ToolsTags;
 
 class Tags extends \Modules\System\Admin\Expend

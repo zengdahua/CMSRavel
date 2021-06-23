@@ -3,7 +3,7 @@
 namespace Modules\Article\Web;
 
 use Modules\Article\Resource\ArticleCollection;
-use Modules\Common\Web\Base;
+use Duxravel\Core\Web\Base;
 
 class Article extends Base
 {

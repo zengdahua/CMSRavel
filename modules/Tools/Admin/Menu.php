@@ -2,8 +2,8 @@
 
 namespace Modules\Tools\Admin;
 
-use Modules\Common\UI\Form;
-use Modules\Common\UI\Table;
+use Duxravel\Core\UI\Form;
+use Duxravel\Core\UI\Table;
 
 class Menu extends \Modules\System\Admin\Expend
 {

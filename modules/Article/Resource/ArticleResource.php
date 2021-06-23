@@ -2,7 +2,7 @@
 
 namespace Modules\Article\Resource;
 
-use Modules\Common\Resource\BaseResource;
+use Duxravel\Core\Resource\BaseResource;
 
 class ArticleResource extends BaseResource
 {

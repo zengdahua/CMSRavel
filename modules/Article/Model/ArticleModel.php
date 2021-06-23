@@ -6,7 +6,7 @@ namespace Modules\Article\Model;
  * Class ArticleModel
  * @package Modules\Article\Model
  */
-class ArticleModel extends \Modules\Common\Model\Base
+class ArticleModel extends \Duxravel\Core\Model\Base
 {
 
     protected $table = 'article_model';

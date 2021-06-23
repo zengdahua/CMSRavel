@@ -25,9 +25,9 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
-        \Modules\Common\Middleware\CheckInstall::class,
-        \Modules\Common\Middleware\VisitorBefore::class,
-        \Modules\Common\Middleware\VisitorAfter::class,
+        \Duxravel\Core\Middleware\CheckInstall::class,
+        \Duxravel\Core\Middleware\VisitorBefore::class,
+        \Duxravel\Core\Middleware\VisitorAfter::class,
     ];
     /**
      * The application's route middleware groups.
@@ -73,10 +73,10 @@ class Kernel extends HttpKernel
         'auth.admin' => \Modules\System\Middleware\Auth::class,
         'auth.admin.register' => \Modules\System\Middleware\Register::class,
 
-        'api' => \Modules\Common\Middleware\Api::class,
+        'api' => \Duxravel\Core\Middleware\Api::class,
         //'auth.api' => \Modules\Member\Middleware\Auth::class,
 
-        'web' => \Modules\Common\Middleware\Web::class,
+        'web' => \Duxravel\Core\Middleware\Web::class,
 
     ];
 }

@@ -3,8 +3,8 @@
 namespace Modules\System\Admin;
 
 use Illuminate\Support\Facades\DB;
-use Modules\Common\UI\Table;
-use Modules\Common\UI\Widget;
+use Duxravel\Core\UI\Table;
+use Duxravel\Core\UI\Widget;
 
 class Task extends \Modules\System\Admin\Expend
 {
@@ -21,7 +21,7 @@ class Task extends \Modules\System\Admin\Expend
         $statsAll = 0;
         if ($type <> 3) {
             if ($class == 'database') {
-                $data = new \Modules\Common\Model\Jobs();
+                $data = new \Duxravel\Core\Model\Jobs();
                 $table = new Table($data);
             }
             if ($class == 'redis') {
@@ -82,7 +82,7 @@ class Task extends \Modules\System\Admin\Expend
             }));
 
         } else {
-            $data = new \Modules\Common\Model\JobsFailed();
+            $data = new \Duxravel\Core\Model\JobsFailed();
             $table = new Table($data);
 
             $table->title('任务队列');

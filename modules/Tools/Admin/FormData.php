@@ -18,7 +18,7 @@ class FormData extends \Modules\System\Admin\Expend
 
     protected function table()
     {
-        $table = new \Modules\Common\UI\Table(new $this->model());
+        $table = new \Duxravel\Core\UI\Table(new $this->model());
         $table->model()->orderBy('data_id', 'desc');
         $table->title($this->formInfo->name);
 
@@ -56,7 +56,7 @@ class FormData extends \Modules\System\Admin\Expend
 
     public function form(int $id = 0)
     {
-        $form = new \Modules\Common\UI\Form();
+        $form = new \Duxravel\Core\UI\Form();
         $form->dialog(true);
         $form->action(route('admin.tools.formData.save', ['id' => $id, 'form' => $this->formInfo->form_id]));
         app(\Modules\Tools\Service\Form::class)->getFormUI($this->formInfo->form_id, $form, $id);

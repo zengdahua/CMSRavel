@@ -6,5 +6,5 @@ use App\Http\Controllers\Controller;
 
 class Common extends Controller
 {
-    use \Modules\Common\Manage\Common;
+    use \Duxravel\Core\Manage\Common;
 }

@@ -3,7 +3,7 @@
 namespace Modules\System\Admin;
 
 use Illuminate\Support\Facades\DB;
-use Modules\Common\Util\Excel;
+use Duxravel\Core\Util\Excel;
 
 class Area extends \Modules\System\Admin\Expend
 {
@@ -12,7 +12,7 @@ class Area extends \Modules\System\Admin\Expend
 
     protected function table()
     {
-        $table = new \Modules\Common\UI\Table(new $this->model());
+        $table = new \Duxravel\Core\UI\Table(new $this->model());
         $table->title('地区数据');
 
         $table->action()->button('导入', 'admin.system.area.import')->type('dialog');
@@ -32,7 +32,7 @@ class Area extends \Modules\System\Admin\Expend
 
     public function import()
     {
-        $form = new \Modules\Common\UI\Form(collect());
+        $form = new \Duxravel\Core\UI\Form(collect());
         $form->action(route('admin.system.area.importData'));
         $form->dialog(true);
         $form->file('导入数据', 'file')->verify([

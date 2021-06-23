@@ -11,7 +11,7 @@ class Form extends \Modules\System\Admin\Expend
 
     protected function table()
     {
-        $table = new \Modules\Common\UI\Table(new $this->model());
+        $table = new \Duxravel\Core\UI\Table(new $this->model());
         $table->title('自定义表单');
         $table->action()->button('添加', 'admin.tools.form.page')->type('dialog');
 
@@ -32,7 +32,7 @@ class Form extends \Modules\System\Admin\Expend
 
     public function form(int $id = 0)
     {
-        $form = new \Modules\Common\UI\Form(new $this->model());
+        $form = new \Duxravel\Core\UI\Form(new $this->model());
         $form->dialog(true);
 
 

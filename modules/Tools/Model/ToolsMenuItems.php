@@ -6,7 +6,7 @@ namespace Modules\Tools\Model;
  * class ToolsMenuItems
  * @package Modules\Tools\Model
  */
-class ToolsMenuItems extends \Modules\Common\Model\Base
+class ToolsMenuItems extends \Duxravel\Core\Model\Base
 {
     use \Kalnoy\Nestedset\NodeTrait;
 

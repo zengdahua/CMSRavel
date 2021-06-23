@@ -2,13 +2,13 @@
 
 namespace Modules\System\Admin;
 
-use Modules\Common\UI\Form;
-use Modules\Common\UI\Table;
+use Duxravel\Core\UI\Form;
+use Duxravel\Core\UI\Table;
 
 class Api extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Modules\Common\Model\Api::class;
+    public string $model = \Duxravel\Core\Model\Api::class;
 
     protected function table(): Table
     {

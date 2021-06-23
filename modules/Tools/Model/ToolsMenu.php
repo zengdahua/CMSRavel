@@ -6,7 +6,7 @@ namespace Modules\Tools\Model;
  * class ToolsMenu
  * @package Modules\Tools\Model
  */
-class ToolsMenu extends \Modules\Common\Model\Base
+class ToolsMenu extends \Duxravel\Core\Model\Base
 {
 
     protected $table = 'tools_menu';

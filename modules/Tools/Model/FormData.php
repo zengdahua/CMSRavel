@@ -6,7 +6,7 @@ namespace Modules\Tools\Model;
  * Class FormData
  * @package Modules\System\Model
  */
-class FormData extends \Modules\Common\Model\Base
+class FormData extends \Duxravel\Core\Model\Base
 {
 
     protected $table = 'form_data';

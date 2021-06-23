@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -12,8 +11,8 @@ return [
     | the usual Laravel view path has already been registered for you.
     |
     */
-
     'paths' => [
+        base_path(),
         resource_path('views'),
         base_path('modules'),
         base_path('public/themes/' . config('theme.default')),

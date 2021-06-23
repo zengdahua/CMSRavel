@@ -2,7 +2,7 @@
 
 namespace Modules\Article\Resource;
 
-use Modules\Common\Resource\BaseCollection;
+use Duxravel\Core\Resource\BaseCollection;
 
 class ArticleCollection extends BaseCollection
 {

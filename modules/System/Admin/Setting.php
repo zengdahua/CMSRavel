@@ -3,8 +3,8 @@
 namespace Modules\System\Admin;
 
 use Illuminate\Support\Collection;
-use \Modules\Common\UI\Widget;
-use \Modules\Common\UI\Form;
+use \Duxravel\Core\UI\Widget;
+use \Duxravel\Core\UI\Form;
 
 class Setting extends \Modules\System\Admin\Expend
 {
@@ -16,7 +16,7 @@ class Setting extends \Modules\System\Admin\Expend
 
     public function form(): Form
     {
-        //$this->dispatch(new \Modules\Common\Jobs\Task(\Modules\System\Service\Menu::class, 'test', [], 20));
+        //$this->dispatch(new \Duxravel\Core\Jobs\Task(\Modules\System\Service\Menu::class, 'test', [], 20));
 
         $environment = app()->environment();
         $data = collect([
@@ -39,7 +39,7 @@ class Setting extends \Modules\System\Admin\Expend
             'IMAGE_WATER_ALPHA' => env('IMAGE_WATER_ALPHA'),
             'IMAGE_WATER_IMAGE' => env('IMAGE_WATER_IMAGE'),
         ]);
-        $form = new \Modules\Common\UI\Form($data, false);
+        $form = new \Duxravel\Core\UI\Form($data, false);
         $form->title('系统设置', false);
         $form->action(route('admin.system.setting.save'));
         $form->layout(Widget::alert('系统设置选项为运维人员便捷使用，非专业人士或不清楚选项请勿随意修改，否则可能会导致系统崩溃', '安全提示', function ($alert) {

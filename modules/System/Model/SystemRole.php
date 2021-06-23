@@ -6,7 +6,7 @@ namespace Modules\System\Model;
  * Class SystemRole
  * @package Modules\System\Model
  */
-class SystemRole extends \Modules\Common\Model\Base
+class SystemRole extends \Duxravel\Core\Model\Base
 {
 
     protected $table = 'system_role';

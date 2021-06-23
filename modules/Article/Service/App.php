@@ -2,7 +2,7 @@
 
 namespace Modules\Article\Service;
 
-use Modules\Common\Util\Blade;
+use Duxravel\Core\Util\Blade;
 
 /**
  * 应用扩展接口
