@@ -38,6 +38,10 @@ class Setting extends \Modules\System\Admin\Expend
             'IMAGE_WATER' => env('IMAGE_WATER'),
             'IMAGE_WATER_ALPHA' => env('IMAGE_WATER_ALPHA'),
             'IMAGE_WATER_IMAGE' => env('IMAGE_WATER_IMAGE'),
+            'THEME_DEFAULT' => env('THEME_DEFAULT'),
+            'THEME_TITLE' => env('THEME_TITLE'),
+            'THEME_KEYWORD' => env('THEME_KEYWORD'),
+            'THEME_DESCRIPTION' => env('THEME_DESCRIPTION'),
         ]);
         $form = new \Duxravel\Core\UI\Form($data, false);
         $form->title('系统设置', false);
