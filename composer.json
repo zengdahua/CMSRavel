@@ -12,7 +12,8 @@
         "ext-bcmath": "*",
         "ext-fileinfo": "*",
         "ext-json": "*",
-        "duxphp/duxravel-app": "dev-main"
+        "duxphp/duxravel-app": "dev-main",
+        "duxphp/duxravel-admin": "dev-main"
     },
     "require-dev": {
         "composer/composer": "^2.1",

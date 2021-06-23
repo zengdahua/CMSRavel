@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'api',
-        'passwords' => 'users',
+        'guard' => 'admin',
+        'passwords' => 'admins',
     ],
 
     /*
@@ -72,10 +72,10 @@ return [
             'driver' => 'eloquent',
             'model' => Modules\System\Model\SystemUser::class,
         ],
-        'users' => [
+        /*'users' => [
             'driver' => 'eloquent',
             'model' => Modules\Member\Model\MemberUser::class,
-        ]
+        ]*/
 
         // 'users' => [
         //     'driver' => 'database',

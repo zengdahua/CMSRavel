@@ -2,11 +2,10 @@
 
 namespace Modules\Article\Admin;
 
-use Duxravel\Core\Composer\AppPlugin;
-use Duxravel\Core\Util\Tree;
 use Duxravel\Core\UI\Form;
 use Duxravel\Core\UI\Table;
 use Duxravel\Core\UI\Widget;
+use Duxravel\Core\Util\Menu;
 
 class Article extends ArticleExpend
 {

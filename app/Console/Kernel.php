@@ -31,24 +31,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('visitor:clear')->daily();
         // 每周三清理操作日志
         $schedule->command('operate:clear')->weeklyOn(3);
-
-        // $schedule->command('inspire')->hourly();
     }
 
     public function __construct(Application $app, Dispatcher $events)
     {
         parent::__construct($app, $events);
-
-        // 注册模块命令
-        $list = glob(base_path('modules') . '/*/Console/*.php');
-        foreach ($list as $file) {
-            $file = str_replace(
-                ['/', '.php'],
-                ['\\', ''],
-                Str::after($file, base_path('modules'))
-            );
-            $this->commands[] =  "\\Modules{$file}";
-        }
     }
 
     /**

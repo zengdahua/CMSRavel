@@ -24,10 +24,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-
-        \Duxravel\Core\Middleware\CheckInstall::class,
-        \Duxravel\Core\Middleware\VisitorBefore::class,
-        \Duxravel\Core\Middleware\VisitorAfter::class,
     ];
     /**
      * The application's route middleware groups.
@@ -44,11 +40,9 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-
         'api' => [
-            \App\Http\Middleware\AcceptHeader::class, // 强制json
-            'throttle:api',  // 流量限制
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,  // 参数模型转换
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
 
@@ -65,18 +59,9 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-
-        'auth.admin' => \Modules\System\Middleware\Auth::class,
-        'auth.admin.register' => \Modules\System\Middleware\Register::class,
-
-        'api' => \Duxravel\Core\Middleware\Api::class,
-        //'auth.api' => \Modules\Member\Middleware\Auth::class,
-
-        'web' => \Duxravel\Core\Middleware\Web::class,
 
     ];
 }

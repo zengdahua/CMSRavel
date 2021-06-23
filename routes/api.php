@@ -17,23 +17,3 @@ use Illuminate\Support\Facades\Route;
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
-
-
-/**
- * API认证
- */
-Route::group(['middleware' => ['api']], function () {
-    foreach (glob(base_path('modules') . '/*/Route/Api.php') as $file) {
-        require $file;
-    }
-});
-
-
-/**
- * 用户认证
- */
-Route::group(['middleware' => ['api', 'auth.api']], function () {
-    foreach (glob(base_path('modules') . '/*/Route/AuthApi.php') as $file) {
-        require $file;
-    }
-});
