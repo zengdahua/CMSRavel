@@ -26,7 +26,7 @@ class Menu
         $curName = request()->route()->getName();
         $formInfo = [];
         if (strpos($curName, 'admin.tools.formData', 0) !== false) {
-            $formInfo = \Modules\Tools\Model\Form::find(request()->get('form'));
+            $formInfo = \Duxravel\Core\Model\Form::find(request()->get('form'));
         }
         return [
             'tools' => [

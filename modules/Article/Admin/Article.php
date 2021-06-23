@@ -106,7 +106,7 @@ class Article extends ArticleExpend
             $form->image('封面', 'image');
             // 设置表单元素
             if ($formId) {
-                app(\Modules\Tools\Service\Form::class)->getFormUI($formId, $form, $info['article_id'], \Modules\Article\Model\Article::class);
+                app(\Duxravel\Core\Service\Form::class)->getFormUI($formId, $form, $info['article_id'], \Modules\Article\Model\Article::class);
             }
             $row = $form->row();
             $row->column(function ($form) {

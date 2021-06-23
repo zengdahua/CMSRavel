@@ -7,13 +7,13 @@ use Illuminate\Validation\Rule;
 class FormData extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Modules\Tools\Model\FormData::class;
+    public string $model = \Duxravel\Core\Model\FormData::class;
     protected $formInfo;
 
     public function __construct()
     {
         $formId = request()->get('form');
-        $this->formInfo = \Modules\Tools\Model\Form::find($formId);
+        $this->formInfo = \Duxravel\Core\Model\Form::find($formId);
     }
 
     protected function table()
@@ -59,14 +59,14 @@ class FormData extends \Modules\System\Admin\Expend
         $form = new \Duxravel\Core\UI\Form();
         $form->dialog(true);
         $form->action(route('admin.tools.formData.save', ['id' => $id, 'form' => $this->formInfo->form_id]));
-        app(\Modules\Tools\Service\Form::class)->getFormUI($this->formInfo->form_id, $form, $id);
+        app(\Duxravel\Core\Service\Form::class)->getFormUI($this->formInfo->form_id, $form, $id);
         return $form;
     }
 
     public function save($id)
     {
         $data = $this->form($id)->save();
-        app(\Modules\Tools\Service\Form::class)->saveForm($this->formInfo->form_id, $data, $id);
+        app(\Duxravel\Core\Service\Form::class)->saveForm($this->formInfo->form_id, $data, $id);
         return app_success('更新'.$this->formInfo['menu'].'成功', [], route('admin.tools.formData', ['form' => $this->formInfo->form_id]));
     }
 

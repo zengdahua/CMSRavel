@@ -52,7 +52,7 @@ class Application extends \Modules\System\Admin\Common
         ];
         $this->assign('typeList', $typeList);
 
-        $formList = \Modules\Tools\Model\Form::where('manage' , 0)->get();
+        $formList = \Duxravel\Core\Model\Form::where('manage' , 0)->get();
         $this->assign('formList', $formList);
         return $this->systemView();
     }

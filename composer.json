@@ -15,6 +15,13 @@
         "duxphp/duxravel-app": "dev-main"
     },
     "require-dev": {
+        "composer/composer": "^2.1",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "kitloong/laravel-migrations-generator": "^4.4",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
     },
     "config": {
         "optimize-autoloader": true,

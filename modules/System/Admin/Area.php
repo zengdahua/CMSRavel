@@ -8,7 +8,7 @@ use Duxravel\Core\Util\Excel;
 class Area extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Modules\System\Model\SystemArea::class;
+    public string $model = \Duxravel\Core\Model\ToolsArea::class;
 
     protected function table()
     {

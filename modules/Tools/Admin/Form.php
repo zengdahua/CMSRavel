@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 class Form extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Modules\Tools\Model\Form::class;
+    public string $model = \Duxravel\Core\Model\Form::class;
 
     protected function table()
     {
@@ -71,7 +71,7 @@ class Form extends \Modules\System\Admin\Expend
     public function settingSave(int $id)
     {
         $data = request()->input('data');
-        $model = new \Modules\Tools\Model\Form();
+        $model = new \Duxravel\Core\Model\Form();
         $model->where('form_id', $id)->update(['data' => $data]);
         return app_success('保存表单数据成功', [], route('admin.tools.form'));
     }
