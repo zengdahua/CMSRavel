@@ -12,10 +12,10 @@
         "ext-bcmath": "*",
         "ext-fileinfo": "*",
         "ext-json": "*",
-        "duxphp/duxravel-admin": "<2.0",
-        "duxphp/duxravel-app": "<2.0",
-        "duxphp/duxravel-article": "<2.0",
-        "duxphp/duxravel-static": "<2.0"
+        "duxphp/duxravel-admin": "dev-main",
+        "duxphp/duxravel-app": "dev-main",
+        "duxphp/duxravel-article": "dev-main",
+        "duxphp/duxravel-static": "dev-main"
     },
     "require-dev": {
         "composer/composer": "^2.1",
