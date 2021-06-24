@@ -9,12 +9,31 @@ DuxRavel 是一款基于Laravel框架的全新一代开源内容管理系统，�
 
 ## 安装说明
 
-1、请建立站点目录并执行一下命令
+### 安装方式一 (推荐)
+
+请建立站点目录并执行一下命令
 ```php
 composer create-project duxphp/ravelcms ./
 ```
-2、将 web 环境的目录指向 `public` 目录
 
-3、安装完毕后请访问 web 环境绑定 `域名` 启动安装向导
+### 安装方式二
+1、从仓库下载源文件到站点目录
+
+2、运行命令初始化 
+
+```composer install```
+
+3、待上一步结束后运行以下2行命令
+
+```
+composer run-script post-root-package-install
+composer run-script post-create-project-cmd
+ ```
+
+### 环境目录
+将 web 环境的目录指向 `public` 目录
+
+### 安装向导
+安装完毕后请访问 web 环境绑定 `域名` 启动安装向导
 
 
