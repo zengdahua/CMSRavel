@@ -12,8 +12,8 @@
         "ext-bcmath": "*",
         "ext-fileinfo": "*",
         "ext-json": "*",
-        "duxphp/duxravel-admin": "dev-main",
         "duxphp/duxravel-app": "dev-main",
+        "duxphp/duxravel-admin": "dev-main",
         "duxphp/duxravel-article": "dev-main",
         "duxphp/duxravel-static": "dev-main"
     },
@@ -51,6 +51,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "pre-autoload-dump": [
+            "@php -r \"unlink('./bootstrap/cache/duxravel.php');\""
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
@@ -63,8 +66,7 @@
             "@php artisan app:install-static system"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan cache:clear --tags=duxravel-run"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ]
     }
 }
