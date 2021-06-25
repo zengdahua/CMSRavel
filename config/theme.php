@@ -11,4 +11,10 @@ return [
         'default'
     ),
 
+
+    'mobile' => env(
+        'THEME_MOBILE',
+        'default'
+    )
+
 ];
