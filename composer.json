@@ -52,7 +52,7 @@
     "prefer-stable": true,
     "scripts": {
         "pre-autoload-dump": [
-            "@php -r \"unlink('./bootstrap/cache/duxravel.php');\""
+            "@php -r \"file_exists('./bootstrap/cache/duxravel.php') ? unlink('./bootstrap/cache/duxravel.php') : '';\""
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
