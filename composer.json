@@ -12,9 +12,9 @@
         "ext-bcmath": "*",
         "ext-fileinfo": "*",
         "ext-json": "*",
-        "duxphp/duxravel-app": "<2.0.0",
-        "duxphp/duxravel-admin": "<2.0.0",
-        "duxphp/duxravel-article": "<2.0.0",
+        "duxphp/duxravel-admin": "dev-main",
+        "duxphp/duxravel-app": "dev-main",
+        "duxphp/duxravel-article": "dev-main",
         "duxphp/duxravel-static": "<2.0.0"
     },
     "require-dev": {

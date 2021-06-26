@@ -175,13 +175,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        /**
-         * 扩展
-         */
-        Intervention\Image\ImageServiceProvider::class,
-        Jenssegers\Agent\AgentServiceProvider::class,
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-
     ],
 
     /*
@@ -233,10 +226,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        //扩展
-        'Image' => Intervention\Image\Facades\Image::class,
-        'Agent' => Jenssegers\Agent\Facades\Agent::class,
 
     ],
 
