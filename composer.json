@@ -15,7 +15,7 @@
         "duxphp/duxravel-admin": "dev-main",
         "duxphp/duxravel-app": "dev-main",
         "duxphp/duxravel-article": "dev-main",
-        "duxphp/duxravel-static": "<2.0.0"
+        "duxphp/duxravel-static": "dev-main"
     },
     "require-dev": {
         "composer/composer": "^2.1",
