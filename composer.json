@@ -66,7 +66,8 @@
             "@php artisan app:install-static system"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan migrate"
         ]
     }
 }
