@@ -15,7 +15,6 @@ return [
         base_path(),
         resource_path('views'),
         base_path('modules'),
-        base_path('public/themes/' . config('theme.default')),
     ],
 
     /*
